@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Royal Grace Global - Premium Indonesian Eyelashes Export</title>
+    <title>Royal Grace Global - Premium Indonesian Eyelashes B2B Export</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Sacramento&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Sacramento&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -31,8 +31,8 @@
                             950: '#230a33',
                         },
                         gold: {
-                            300: '#f3e1a0',
-                            400: '#e5ca73',
+                            300: '#f7eaad',
+                            400: '#edd883',
                             500: '#d4af37',
                             600: '#b89226',
                             700: '#8e6e18',
@@ -42,6 +42,21 @@
                         serif: ['Cormorant Garamond', 'Georgia', 'serif'],
                         sans: ['Plus Jakarta Sans', 'sans-serif'],
                         script: ['Sacramento', 'cursive'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'shimmer': 'shimmer 2.5s infinite linear',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        shimmer: {
+                            '0%': { backgroundPosition: '-200% 0' },
+                            '100%': { backgroundPosition: '200% 0' },
+                        }
                     }
                 }
             }
@@ -56,91 +71,116 @@
 
     <style>
         .glass-purple {
-            background: rgba(82, 40, 106, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: rgba(61, 28, 82, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
         }
         .glass-card {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(12px);
         }
-        .gradient-text {
-            background: linear-gradient(135deg, #3d1c52 0%, #6b3389 50%, #d4af37 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .gold-border-glow {
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.25);
         }
-        .gold-glow:hover {
-            box-shadow: 0 10px 25px -5px rgba(212, 175, 55, 0.4);
+        .gold-border-glow:hover {
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.45);
         }
-        .purple-shadow {
-            box-shadow: 0 20px 40px -15px rgba(61, 28, 82, 0.25);
+        .shimmer-bg {
+            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.25) 50%, rgba(255,255,255,0) 100%);
+            background-size: 200% 100%;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f3e8f8;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #8342a6;
+            border-radius: 9999px;
+        }
+        /* Particle Background Canvas Overlay */
+        .hero-gradient {
+            background: radial-gradient(circle at 70% 30%, #f3e2f8 0%, #ebdaf2 40%, #dec4eb 100%);
         }
     </style>
 </head>
-<body class="font-sans bg-[#fbf8fd] text-slate-800 antialiased selection:bg-royal-700 selection:text-white"
-      x-data="appState()">
+<body class="font-sans bg-[#fcf8fe] text-slate-800 antialiased selection:bg-royal-700 selection:text-white"
+      x-data="appState()" x-init="initApp()">
 
     <!-- Top Announcement Bar for Global Buyers -->
-    <div class="bg-royal-950 text-royal-200 text-xs py-2 px-4 border-b border-royal-800/50">
+    <div class="bg-royal-950 text-royal-200 text-xs py-2 px-4 border-b border-royal-800/60 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2">
-            <div class="flex items-center space-x-4">
-                <span><i class="fa-solid fa-earth-americas text-gold-400 mr-1.5"></i> Certified Indonesian Eyelash Exporter</span>
-                <span class="hidden md:inline">|</span>
-                <span class="hidden md:inline"><i class="fa-solid fa-shield-halved text-gold-400 mr-1.5"></i> OEM & Private Label Solutions</span>
+            <div class="flex items-center space-x-3 text-[11px] sm:text-xs">
+                <span class="inline-flex items-center gap-1.5 bg-royal-900 text-gold-300 px-2.5 py-0.5 rounded-full font-semibold border border-gold-500/30">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+                    VERIFIED EXPORTER
+                </span>
+                <span class="hidden sm:inline">|</span>
+                <span class="truncate"><i class="fa-solid fa-earth-americas text-gold-400 mr-1"></i> Direct Indonesian Factory • Exporting to 35+ Nations</span>
             </div>
-            <div class="flex items-center space-x-6 text-xs">
-                <div class="flex items-center space-x-2">
-                    <i class="fa-solid fa-globe text-royal-300"></i>
-                    <select x-model="currency" class="bg-transparent text-royal-200 focus:outline-none cursor-pointer">
-                        <option value="USD" class="text-slate-800">USD ($)</option>
-                        <option value="EUR" class="text-slate-800">EUR (€)</option>
-                        <option value="GBP" class="text-slate-800">GBP (£)</option>
-                        <option value="IDR" class="text-slate-800">IDR (Rp)</option>
+
+            <div class="flex items-center space-x-5 text-xs">
+                <!-- Multi-Currency Switcher -->
+                <div class="flex items-center space-x-1.5 bg-royal-900/80 px-2.5 py-1 rounded-full border border-royal-700">
+                    <i class="fa-solid fa-coins text-gold-400 text-[10px]"></i>
+                    <span class="text-[11px] text-royal-300">Currency:</span>
+                    <select x-model="currency" @change="updateCurrencySymbol()" class="bg-transparent text-white font-bold text-xs focus:outline-none cursor-pointer">
+                        <option value="USD" class="text-slate-900">USD ($)</option>
+                        <option value="EUR" class="text-slate-900">EUR (€)</option>
+                        <option value="GBP" class="text-slate-900">GBP (£)</option>
+                        <option value="AUD" class="text-slate-900">AUD (A$)</option>
+                        <option value="AED" class="text-slate-900">AED (د.إ)</option>
                     </select>
                 </div>
-                <button @click="openRFQModal('General Sample Request')" class="text-gold-400 hover:text-white transition font-medium flex items-center gap-1">
-                    <i class="fa-solid fa-box-open"></i> Request Free Export Sample Kit
+
+                <button @click="openSampleKitModal()" class="text-gold-400 hover:text-white transition font-medium flex items-center gap-1.5 text-xs group">
+                    <i class="fa-solid fa-box-open group-hover:scale-110 transition"></i>
+                    <span>Free Export Sample Kit</span>
                 </button>
             </div>
         </div>
     </div>
 
     <!-- Main Navigation Header -->
-    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-royal-100 transition-all duration-300" id="mainHeader">
+    <header class="sticky top-[33px] z-40 bg-white/95 backdrop-blur-md border-b border-royal-100 shadow-sm transition-all duration-300" id="mainHeader">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <!-- Brand Logo -->
             <a href="#" class="flex items-center gap-3 group">
-                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-royal-900 to-royal-700 flex items-center justify-center text-gold-400 shadow-md group-hover:scale-105 transition duration-300">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-royal-950 via-royal-900 to-royal-800 flex items-center justify-center text-gold-400 shadow-md group-hover:scale-105 transition duration-300 border border-gold-500/20">
                     <i class="fa-solid fa-crown text-xl"></i>
                 </div>
                 <div>
                     <span class="block font-serif text-xl sm:text-2xl font-bold tracking-wider text-royal-950 uppercase leading-none">Royal Grace Global</span>
-                    <span class="text-[10px] tracking-widest text-royal-600 uppercase font-medium">Bridging Nations, Enriching Lives</span>
+                    <span class="text-[10px] tracking-[0.2em] text-royal-600 uppercase font-semibold">Bridging Nations • Enriching Lives</span>
                 </div>
             </a>
 
             <!-- Desktop Navigation Links -->
-            <nav class="hidden lg:flex items-center space-x-8 text-sm font-medium text-slate-700">
-                <a href="#about" class="hover:text-royal-800 transition">About Us</a>
-                <a href="#products" class="hover:text-royal-800 transition">Our Products</a>
-                <a href="#craftsmanship" class="hover:text-royal-800 transition">Craftsmanship</a>
-                <a href="#customizer" class="hover:text-royal-800 transition">Private Label OEM</a>
-                <a href="#calculator" class="hover:text-royal-800 transition">Export Calculator</a>
-                <a href="#why-us" class="hover:text-royal-800 transition">Why Choose Us</a>
+            <nav class="hidden lg:flex items-center space-x-7 text-xs font-semibold tracking-wider text-slate-700 uppercase">
+                <a href="#about" class="hover:text-royal-800 transition py-2 border-b-2 border-transparent hover:border-royal-800">About Us</a>
+                <a href="#products" class="hover:text-royal-800 transition py-2 border-b-2 border-transparent hover:border-royal-800">Catalog & Styles</a>
+                <a href="#visualizer" class="hover:text-royal-800 transition py-2 border-b-2 border-transparent hover:border-royal-800 text-royal-900 font-bold flex items-center gap-1">
+                    <span class="w-2 h-2 rounded-full bg-gold-500"></span> Visualizer
+                </a>
+                <a href="#oem" class="hover:text-royal-800 transition py-2 border-b-2 border-transparent hover:border-royal-800">Private Label OEM</a>
+                <a href="#calculator" class="hover:text-royal-800 transition py-2 border-b-2 border-transparent hover:border-royal-800">Freight Estimator</a>
+                <a href="#why-us" class="hover:text-royal-800 transition py-2 border-b-2 border-transparent hover:border-royal-800">Why Us</a>
             </nav>
 
             <!-- CTA Actions -->
-            <div class="hidden sm:flex items-center space-x-4">
-                <button @click="openRFQModal('General Inquiry')" 
-                        class="bg-royal-800 hover:bg-royal-900 text-white text-sm font-medium px-6 py-2.5 rounded-full shadow-md hover:shadow-lg transition duration-300 flex items-center gap-2 group">
-                    <span>Get In Touch</span>
-                    <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition"></i>
+            <div class="hidden sm:flex items-center space-x-3">
+                <button @click="openRFQModal('Header Fast Quote')" 
+                        class="bg-gradient-to-r from-royal-800 to-royal-950 hover:from-royal-900 hover:to-royal-950 text-white text-xs font-bold px-6 py-3 rounded-full shadow-md hover:shadow-lg transition duration-300 flex items-center gap-2 group border border-gold-500/20">
+                    <span>Inquire Export Quote</span>
+                    <i class="fa-solid fa-paper-plane text-[10px] group-hover:translate-x-1 transition text-gold-300"></i>
                 </button>
             </div>
 
             <!-- Mobile Menu Button -->
-            <button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden p-2 rounded-lg text-royal-900 hover:bg-royal-50 focus:outline-none">
-                <i class="fa-solid text-2xl" :class="mobileMenuOpen ? 'fa-xmark' : 'fa-bars'"></i>
+            <button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden p-2 rounded-xl text-royal-950 hover:bg-royal-50 focus:outline-none">
+                <i class="fa-solid text-2xl" :class="mobileMenuOpen ? 'fa-xmark' : 'fa-bars-staggered'"></i>
             </button>
         </div>
 
@@ -152,38 +192,41 @@
              x-transition:leave="transition ease-in duration-150"
              x-transition:leave-start="opacity-100 translate-y-0"
              x-transition:leave-end="opacity-0 -translate-y-4"
-             class="lg:hidden bg-white border-b border-royal-100 px-6 py-6 shadow-xl">
-            <div class="flex flex-col space-y-4 text-base font-medium">
-                <a href="#about" @click="mobileMenuOpen = false" class="text-slate-800 hover:text-royal-800 py-1 border-b border-slate-100">About Us</a>
-                <a href="#products" @click="mobileMenuOpen = false" class="text-slate-800 hover:text-royal-800 py-1 border-b border-slate-100">Our Products</a>
-                <a href="#craftsmanship" @click="mobileMenuOpen = false" class="text-slate-800 hover:text-royal-800 py-1 border-b border-slate-100">Craftsmanship</a>
-                <a href="#customizer" @click="mobileMenuOpen = false" class="text-slate-800 hover:text-royal-800 py-1 border-b border-slate-100">Private Label Configurator</a>
-                <a href="#calculator" @click="mobileMenuOpen = false" class="text-slate-800 hover:text-royal-800 py-1 border-b border-slate-100">Export Calculator</a>
-                <a href="#why-us" @click="mobileMenuOpen = false" class="text-slate-800 hover:text-royal-800 py-1 border-b border-slate-100">Why Choose Us</a>
-                <div class="pt-4">
-                    <button @click="openRFQModal('Mobile Menu RFQ'); mobileMenuOpen = false;" 
-                            class="w-full bg-royal-800 text-white py-3 rounded-xl font-medium text-center shadow-md">
-                        Get In Touch / Inquiry Now
+             class="lg:hidden bg-white border-b border-royal-100 px-6 py-6 shadow-2xl">
+            <div class="flex flex-col space-y-4 text-sm font-semibold text-slate-800 uppercase tracking-wide">
+                <a href="#about" @click="mobileMenuOpen = false" class="py-2 border-b border-slate-100">About Us</a>
+                <a href="#products" @click="mobileMenuOpen = false" class="py-2 border-b border-slate-100">Products Catalog</a>
+                <a href="#visualizer" @click="mobileMenuOpen = false" class="py-2 border-b border-slate-100 text-royal-800">Lash Eye Visualizer</a>
+                <a href="#oem" @click="mobileMenuOpen = false" class="py-2 border-b border-slate-100">Private Label OEM</a>
+                <a href="#calculator" @click="mobileMenuOpen = false" class="py-2 border-b border-slate-100">Freight Calculator</a>
+                <a href="#why-us" @click="mobileMenuOpen = false" class="py-2 border-b border-slate-100">Why Choose Us</a>
+                <div class="pt-4 flex flex-col gap-2">
+                    <button @click="openSampleKitModal(); mobileMenuOpen = false;" class="w-full bg-gold-500 text-royal-950 py-3 rounded-xl font-bold text-center text-xs uppercase tracking-wider">
+                        <i class="fa-solid fa-box-open mr-2"></i> Request Sample Kit
+                    </button>
+                    <button @click="openRFQModal('Mobile Menu RFQ'); mobileMenuOpen = false;" class="w-full bg-royal-900 text-white py-3 rounded-xl font-bold text-center text-xs uppercase tracking-wider">
+                        Contact Export Desk
                     </button>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- HERO SECTION (Matching exact image layout right side) -->
-    <section class="relative bg-gradient-to-br from-[#f6effa] via-[#f2e2f7] to-[#e8d5f2] py-16 lg:py-24 overflow-hidden">
-        <!-- Subtle Decorative Background Elements -->
-        <div class="absolute top-0 right-0 w-96 h-96 bg-royal-300/20 rounded-full filter blur-3xl -mr-20 -mt-20 pointer-events-none"></div>
-        <div class="absolute bottom-0 left-0 w-80 h-80 bg-gold-300/20 rounded-full filter blur-3xl -ml-20 -mb-20 pointer-events-none"></div>
+    <!-- HERO SECTION (Matching exact image layout right side with high-impact B2B enhancements) -->
+    <section class="relative hero-gradient py-16 lg:py-24 overflow-hidden border-b border-royal-200/50">
+        <!-- Floating Ambient Glow Lights -->
+        <div class="absolute top-10 right-10 w-96 h-96 bg-royal-400/20 rounded-full filter blur-3xl pointer-events-none animate-pulse-slow"></div>
+        <div class="absolute bottom-10 left-10 w-96 h-96 bg-gold-400/20 rounded-full filter blur-3xl pointer-events-none animate-pulse-slow"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 
                 <!-- Left Column: Copywriting and CTAs -->
                 <div class="lg:col-span-7 space-y-6">
-                    <div class="inline-flex items-center gap-2 bg-royal-900/10 text-royal-900 px-4 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase">
-                        <span class="w-2 h-2 rounded-full bg-royal-700 animate-ping"></span>
-                        PREMIUM INDONESIAN
+                    
+                    <div class="inline-flex items-center gap-2 bg-royal-900/10 text-royal-950 px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase border border-royal-300">
+                        <i class="fa-solid fa-award text-gold-600"></i>
+                        <span>PREMIUM INDONESIAN EXPORTER</span>
                     </div>
 
                     <h1 class="font-serif text-5xl sm:text-6xl xl:text-7xl font-bold text-royal-950 tracking-tight leading-none">
@@ -194,66 +237,77 @@
                         Natural Beauty. Global Confidence.
                     </p>
 
-                    <p class="text-slate-700 text-base sm:text-lg max-w-2xl leading-relaxed">
+                    <p class="text-slate-700 text-base sm:text-lg max-w-2xl leading-relaxed font-normal">
                         High-quality, ethically sourced eyelashes from Indonesia, crafted for global beauty brands. We combine natural resources, skilled craftsmanship, and strict quality control to deliver premium eyelashes that enhance beauty and create opportunities for communities.
                     </p>
 
-                    <div class="pt-4 flex flex-wrap items-center gap-4">
+                    <!-- Interactive CTAs -->
+                    <div class="pt-2 flex flex-wrap items-center gap-4">
                         <button @click="openRFQModal('Hero Inquire Now')" 
-                                class="bg-royal-800 hover:bg-royal-900 text-white font-medium px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition duration-300 flex items-center gap-3 group text-base">
+                                class="bg-royal-900 hover:bg-royal-950 text-white font-bold px-8 py-4 rounded-full shadow-xl hover:shadow-2xl transition duration-300 flex items-center gap-3 text-sm tracking-wide uppercase group border border-gold-400/30">
                             <span>Inquire Now</span>
-                            <i class="fa-solid fa-arrow-right text-sm group-hover:translate-x-1.5 transition"></i>
+                            <i class="fa-solid fa-arrow-right text-gold-400 group-hover:translate-x-1.5 transition"></i>
                         </button>
 
-                        <a href="#catalog" class="bg-white/80 hover:bg-white text-royal-950 font-medium px-8 py-4 rounded-full border border-royal-200 shadow-sm hover:shadow-md transition text-base flex items-center gap-2">
-                            <i class="fa-solid fa-eye text-royal-700"></i>
-                            <span>Explore Catalog</span>
-                        </a>
+                        <button @click="openVideoModal()" 
+                                class="bg-white/90 hover:bg-white text-royal-950 font-semibold px-6 py-4 rounded-full border border-royal-200 shadow-md hover:shadow-lg transition text-sm flex items-center gap-3 group">
+                            <div class="w-8 h-8 rounded-full bg-royal-800 text-gold-400 flex items-center justify-center group-hover:scale-110 transition shadow-sm">
+                                <i class="fa-solid fa-play text-xs pl-0.5"></i>
+                            </div>
+                            <span>Watch Factory Tour</span>
+                        </button>
                     </div>
 
-                    <!-- Highlight Badges Bar (From Image bottom of hero) -->
-                    <div class="grid grid-cols-3 gap-4 pt-10 border-t border-royal-200/80">
-                        <div class="text-center sm:text-left">
-                            <span class="block text-xs font-bold tracking-wider text-royal-900 uppercase">PREMIUM QUALITY</span>
+                    <!-- Highlight Badges Bar (Matching lower hero bar from image) -->
+                    <div class="grid grid-cols-3 gap-4 pt-8 border-t border-royal-300/60">
+                        <div class="text-left">
+                            <span class="block text-xs font-bold tracking-wider text-royal-950 uppercase">PREMIUM QUALITY</span>
                             <span class="text-xs text-slate-600 mt-1 block">100% Hand-crafted Precision</span>
                         </div>
-                        <div class="text-center sm:text-left border-l border-royal-200 pl-4">
-                            <span class="block text-xs font-bold tracking-wider text-royal-900 uppercase">ETHICAL SOURCING</span>
+                        <div class="text-left border-l border-royal-300/80 pl-4">
+                            <span class="block text-xs font-bold tracking-wider text-royal-950 uppercase">ETHICAL SOURCING</span>
                             <span class="text-xs text-slate-600 mt-1 block">Cruelty-Free & Sustainable</span>
                         </div>
-                        <div class="text-center sm:text-left border-l border-royal-200 pl-4">
-                            <span class="block text-xs font-bold tracking-wider text-royal-900 uppercase">GLOBAL OPPORTUNITIES</span>
+                        <div class="text-left border-l border-royal-300/80 pl-4">
+                            <span class="block text-xs font-bold tracking-wider text-royal-950 uppercase">GLOBAL OPPORTUNITIES</span>
                             <span class="text-xs text-slate-600 mt-1 block">Worldwide B2B Shipping</span>
                         </div>
                     </div>
+
                 </div>
 
-                <!-- Right Column: Visual Artwork Showcase -->
+                <!-- Right Column: Visual Artwork Showcase with Floating Elements -->
                 <div class="lg:col-span-5 relative">
                     <div class="relative mx-auto max-w-md lg:max-w-none">
-                        <!-- Main Image Container with Elegant Curved Frame -->
-                        <div class="relative z-10 rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-white">
+                        
+                        <!-- Main Image Container with Frame & Soft Shadow -->
+                        <div class="relative z-10 rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-white group">
                             <img src="https://images.unsplash.com/photo-1583001809873-a1284d5630be?auto=format&fit=crop&w=1000&q=80" 
                                  alt="Premium Indonesian Eyelashes Close Up" 
-                                 class="w-full h-[450px] object-cover hover:scale-105 transition duration-700">
+                                 class="w-full h-[460px] object-cover group-hover:scale-105 transition duration-700">
                             
                             <!-- Overlay Script Badge (Matches "Beauty Empowers Lives" script text from photo) -->
-                            <div class="absolute bottom-6 right-6 bg-white/90 backdrop-blur-md px-6 py-4 rounded-2xl border border-royal-100 shadow-lg text-center transform rotate-[-2deg]">
-                                <span class="font-script text-3xl sm:text-4xl text-royal-800 block leading-tight">
+                            <div class="absolute bottom-6 right-6 bg-white/95 backdrop-blur-md px-6 py-4 rounded-2xl border border-royal-100 shadow-xl text-center transform rotate-[-2deg] transition hover:rotate-0">
+                                <span class="font-script text-3xl sm:text-4xl text-royal-800 block leading-none">
                                     Beauty Empowers Lives
                                 </span>
-                                <span class="text-[10px] tracking-widest uppercase font-semibold text-gold-600">Empowering Indonesian Artisans</span>
+                                <span class="text-[10px] tracking-widest uppercase font-bold text-gold-600 block mt-1">Empowering Indonesian Artisans</span>
                             </div>
+
+                            <!-- Live Zoom Tag -->
+                            <span class="absolute top-4 left-4 bg-royal-950/80 text-gold-300 text-[10px] font-bold px-3 py-1 rounded-full backdrop-blur-md uppercase tracking-widest">
+                                <i class="fa-solid fa-gem mr-1"></i> 3D Faux Mink Craft
+                            </span>
                         </div>
 
                         <!-- Secondary Floating Card Feature -->
-                        <div class="hidden sm:flex absolute -bottom-8 -left-8 z-20 bg-royal-900 text-white p-4 rounded-2xl shadow-xl max-w-xs items-center space-x-3 border border-royal-700">
-                            <div class="w-10 h-10 rounded-full bg-gold-500/20 text-gold-400 flex items-center justify-center shrink-0">
-                                <i class="fa-solid fa-award text-lg"></i>
+                        <div class="hidden sm:flex absolute -bottom-6 -left-8 z-20 bg-royal-950 text-white p-4 rounded-2xl shadow-2xl max-w-xs items-center space-x-3 border border-gold-500/30 animate-float">
+                            <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-gold-400 to-gold-600 text-royal-950 flex items-center justify-center shrink-0 font-bold shadow-md">
+                                <i class="fa-solid fa-shield-halved text-xl"></i>
                             </div>
                             <div>
                                 <p class="text-xs font-bold uppercase tracking-wider text-gold-300">ISO & MSDS Certified</p>
-                                <p class="text-[11px] text-royal-200">Safe for sensitive eyes & hypoallergenic</p>
+                                <p class="text-[11px] text-royal-200 mt-0.5">Hypoallergenic & 100% Safe for Eye Contact</p>
                             </div>
                         </div>
 
@@ -263,6 +317,27 @@
             </div>
         </div>
     </section>
+
+    <!-- B2B TRUST TICKER BAR -->
+    <div class="bg-royal-900 text-white py-3 border-y border-gold-500/30 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 flex items-center justify-between text-xs font-medium">
+            <div class="flex items-center space-x-2 text-gold-300 uppercase tracking-widest text-[11px] font-bold shrink-0">
+                <i class="fa-solid fa-globe text-sm"></i>
+                <span>LIVE EXPORT DESK:</span>
+            </div>
+            <div class="overflow-hidden relative w-full ml-4">
+                <div class="whitespace-nowrap animate-marquee inline-flex space-x-8 text-royal-100 text-xs">
+                    <span><i class="fa-solid fa-circle-check text-emerald-400 mr-1.5"></i> 10,000 Pairs Dispatched to Los Angeles, USA</span>
+                    <span>•</span>
+                    <span><i class="fa-solid fa-circle-check text-emerald-400 mr-1.5"></i> Custom OEM Box Sample Approved for London, UK Brand</span>
+                    <span>•</span>
+                    <span><i class="fa-solid fa-circle-check text-emerald-400 mr-1.5"></i> Bulk Shipment En Route to Dubai, UAE</span>
+                    <span>•</span>
+                    <span><i class="fa-solid fa-circle-check text-emerald-400 mr-1.5"></i> Direct Port Logistics via Semarang & Jakarta Seaports</span>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- SECTION 2: CRAFTSMANSHIP (Matching second block of image) -->
     <section id="craftsmanship" class="py-20 bg-white border-b border-royal-100">
@@ -272,63 +347,184 @@
                 <!-- Left Image Collage -->
                 <div class="lg:col-span-5 order-2 lg:order-1">
                     <div class="relative">
-                        <div class="rounded-2xl overflow-hidden shadow-xl border-2 border-royal-100">
+                        <div class="rounded-3xl overflow-hidden shadow-2xl border-4 border-royal-50">
                             <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=900&q=80" 
                                  alt="Indonesian Artisans Crafting Eyelashes" 
-                                 class="w-full h-[400px] object-cover">
+                                 class="w-full h-[420px] object-cover hover:scale-105 transition duration-500">
                         </div>
-                        <div class="absolute -bottom-6 -right-6 bg-royal-50 p-6 rounded-2xl border border-royal-200 shadow-lg max-w-xs hidden sm:block">
-                            <i class="fa-solid fa-hands-holding-heart text-3xl text-royal-700 mb-2"></i>
-                            <p class="text-xs text-slate-700 font-medium">Over 1,500+ skilled female artisans dedicated to producing flawless lashes for international beauty brands.</p>
+                        
+                        <!-- Floating Artisan Callout -->
+                        <div class="absolute -bottom-6 -right-6 bg-royal-50 p-6 rounded-2xl border border-royal-200 shadow-xl max-w-xs hidden sm:block">
+                            <div class="flex items-center space-x-3 mb-2">
+                                <div class="w-10 h-10 rounded-full bg-royal-800 text-gold-400 flex items-center justify-center font-bold">
+                                    <i class="fa-solid fa-hands-holding-heart"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xs font-bold text-royal-950 uppercase">Empowering Artisans</h4>
+                                    <p class="text-[10px] text-slate-500">Purbalingga & Central Java, Indonesia</p>
+                                </div>
+                            </div>
+                            <p class="text-xs text-slate-700 leading-normal">Over 1,500+ skilled female artisans dedicated to producing flawless lashes for top international cosmetic labels.</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Right Content -->
                 <div class="lg:col-span-7 order-1 lg:order-2 space-y-6">
-                    <span class="text-xs font-bold tracking-widest text-royal-600 uppercase block">INDONESIAN CRAFTSMANSHIP</span>
-                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-royal-950">
+                    <span class="text-xs font-bold tracking-widest text-royal-700 uppercase block">INDONESIAN CRAFTSMANSHIP</span>
+                    <h2 class="font-serif text-3xl sm:text-5xl font-bold text-royal-950 leading-tight">
                         Naturally Beautiful. Responsibly Sourced.
                     </h2>
-                    <p class="text-slate-600 leading-relaxed">
+                    <p class="text-slate-600 leading-relaxed text-base">
                         Our eyelashes are carefully sourced from trusted suppliers in Indonesia, processed with strict quality standards, and prepared for global markets. We are committed to ethical sourcing, excellent quality, and creating economic opportunities for local communities.
                     </p>
 
                     <!-- 4 Icon Pillars Grid (Matching the image) -->
-                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-6">
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4">
                         
-                        <div class="text-center p-4 rounded-xl bg-royal-50/50 hover:bg-royal-50 transition border border-royal-100/60">
-                            <div class="w-12 h-12 mx-auto rounded-full bg-white text-royal-800 shadow-sm flex items-center justify-center mb-3">
-                                <i class="fa-solid fa-gem text-xl"></i>
+                        <div class="text-center p-5 rounded-2xl bg-royal-50/60 hover:bg-royal-100/80 transition border border-royal-200/60 group">
+                            <div class="w-14 h-14 mx-auto rounded-full bg-white text-royal-900 shadow-md flex items-center justify-center mb-3 group-hover:scale-110 transition">
+                                <i class="fa-solid fa-gem text-2xl text-royal-800"></i>
                             </div>
-                            <h4 class="text-xs font-bold text-royal-900 uppercase tracking-wider">PREMIUM QUALITY</h4>
+                            <h4 class="text-xs font-bold text-royal-950 uppercase tracking-wider">PREMIUM QUALITY</h4>
                         </div>
 
-                        <div class="text-center p-4 rounded-xl bg-royal-50/50 hover:bg-royal-50 transition border border-royal-100/60">
-                            <div class="w-12 h-12 mx-auto rounded-full bg-white text-royal-800 shadow-sm flex items-center justify-center mb-3">
-                                <i class="fa-solid fa-heart text-xl"></i>
+                        <div class="text-center p-5 rounded-2xl bg-royal-50/60 hover:bg-royal-100/80 transition border border-royal-200/60 group">
+                            <div class="w-14 h-14 mx-auto rounded-full bg-white text-royal-900 shadow-md flex items-center justify-center mb-3 group-hover:scale-110 transition">
+                                <i class="fa-solid fa-heart text-2xl text-royal-800"></i>
                             </div>
-                            <h4 class="text-xs font-bold text-royal-900 uppercase tracking-wider">ETHICALLY SOURCING</h4>
+                            <h4 class="text-xs font-bold text-royal-950 uppercase tracking-wider">ETHICALLY SOURCED</h4>
                         </div>
 
-                        <div class="text-center p-4 rounded-xl bg-royal-50/50 hover:bg-royal-50 transition border border-royal-100/60">
-                            <div class="w-12 h-12 mx-auto rounded-full bg-white text-royal-800 shadow-sm flex items-center justify-center mb-3">
-                                <i class="fa-solid fa-shield-cat text-xl"></i>
+                        <div class="text-center p-5 rounded-2xl bg-royal-50/60 hover:bg-royal-100/80 transition border border-royal-200/60 group">
+                            <div class="w-14 h-14 mx-auto rounded-full bg-white text-royal-900 shadow-md flex items-center justify-center mb-3 group-hover:scale-110 transition">
+                                <i class="fa-solid fa-shield-cat text-2xl text-royal-800"></i>
                             </div>
-                            <h4 class="text-xs font-bold text-royal-900 uppercase tracking-wider">SAFE & HYGIENIC</h4>
+                            <h4 class="text-xs font-bold text-royal-950 uppercase tracking-wider">SAFE & HYGIENIC</h4>
                         </div>
 
-                        <div class="text-center p-4 rounded-xl bg-royal-50/50 hover:bg-royal-50 transition border border-royal-100/60">
-                            <div class="w-12 h-12 mx-auto rounded-full bg-white text-royal-800 shadow-sm flex items-center justify-center mb-3">
-                                <i class="fa-solid fa-plane-lock text-xl"></i>
+                        <div class="text-center p-5 rounded-2xl bg-royal-50/60 hover:bg-royal-100/80 transition border border-royal-200/60 group">
+                            <div class="w-14 h-14 mx-auto rounded-full bg-white text-royal-900 shadow-md flex items-center justify-center mb-3 group-hover:scale-110 transition">
+                                <i class="fa-solid fa-plane-lock text-2xl text-royal-800"></i>
                             </div>
-                            <h4 class="text-xs font-bold text-royal-900 uppercase tracking-wider">GLOBAL MARKET READY</h4>
+                            <h4 class="text-xs font-bold text-royal-950 uppercase tracking-wider">GLOBAL READY</h4>
                         </div>
 
                     </div>
+
+                    <!-- Certificate Quick Click Bar -->
+                    <div class="pt-4 flex flex-wrap items-center gap-3 border-t border-slate-100">
+                        <span class="text-xs text-slate-500 font-semibold uppercase">Verify Documents:</span>
+                        <button @click="openCertModal('ISO 9001:2015')" class="text-xs bg-slate-100 hover:bg-royal-100 text-royal-900 px-3 py-1.5 rounded-lg border border-slate-200 transition font-semibold">
+                            <i class="fa-solid fa-file-contract text-gold-600 mr-1"></i> ISO 9001 Certified
+                        </button>
+                        <button @click="openCertModal('MSDS Safety Data')" class="text-xs bg-slate-100 hover:bg-royal-100 text-royal-900 px-3 py-1.5 rounded-lg border border-slate-200 transition font-semibold">
+                            <i class="fa-solid fa-vial text-gold-600 mr-1"></i> MSDS Eye Safe
+                        </button>
+                        <button @click="openCertModal('Certificate of Origin Form E/D')" class="text-xs bg-slate-100 hover:bg-royal-100 text-royal-900 px-3 py-1.5 rounded-lg border border-slate-200 transition font-semibold">
+                            <i class="fa-solid fa-passport text-gold-600 mr-1"></i> Certificate of Origin
+                        </button>
+                    </div>
+
                 </div>
 
             </div>
+        </div>
+    </section>
+
+    <!-- NEW FEATURE: INTERACTIVE EYE LASH STYLE VISUALIZER -->
+    <section id="visualizer" class="py-16 bg-gradient-to-b from-royal-950 via-royal-900 to-royal-950 text-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-xs font-bold tracking-widest text-gold-400 uppercase">INTERACTIVE B2B SPEC PREVIEWER</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white mt-2">
+                    Visual Eye Look & Style Previewer
+                </h2>
+                <p class="text-royal-200 mt-3 text-xs sm:text-sm">
+                    Select a lash style below to see real-time volume density, length maps, and recommended market positioning for your brand.
+                </p>
+            </div>
+
+            <div class="bg-white/10 backdrop-blur-xl rounded-3xl p-6 sm:p-10 border border-white/15 shadow-2xl">
+                
+                <!-- Style Selector Tabs -->
+                <div class="flex flex-wrap justify-center gap-3 mb-8">
+                    <template x-for="(style, key) in lashStyles" :key="key">
+                        <button @click="activeStyleKey = key" 
+                                :class="activeStyleKey === key ? 'bg-gold-500 text-royal-950 font-bold shadow-lg scale-105' : 'bg-royal-900/80 text-royal-200 hover:bg-royal-800'"
+                                class="px-5 py-3 rounded-2xl text-xs uppercase tracking-wider transition duration-300 border border-gold-500/30 flex items-center gap-2">
+                            <i class="fa-solid fa-eye"></i>
+                            <span x-text="style.name"></span>
+                        </button>
+                    </template>
+                </div>
+
+                <!-- Preview Display Grid -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center" x-data>
+                    
+                    <!-- Left: Eye Simulation Box -->
+                    <div class="lg:col-span-7 relative rounded-2xl overflow-hidden border-2 border-gold-400/40 shadow-2xl bg-slate-900 h-80 sm:h-96 group">
+                        <img :src="lashStyles[activeStyleKey].image" :alt="lashStyles[activeStyleKey].name" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                        
+                        <div class="absolute inset-0 bg-gradient-to-t from-royal-950 via-transparent to-transparent"></div>
+
+                        <!-- Overlay Specifications -->
+                        <div class="absolute bottom-6 left-6 right-6 flex flex-wrap justify-between items-end gap-4">
+                            <div>
+                                <span class="bg-gold-500 text-royal-950 text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider block w-max mb-1" x-text="lashStyles[activeStyleKey].badge"></span>
+                                <h3 class="font-serif text-3xl font-bold text-white" x-text="lashStyles[activeStyleKey].name"></h3>
+                                <p class="text-xs text-royal-200" x-text="lashStyles[activeStyleKey].tagline"></p>
+                            </div>
+                            <button @click="openRFQModal('Style RFQ: ' + lashStyles[activeStyleKey].name)" 
+                                    class="bg-white text-royal-950 hover:bg-gold-400 font-bold px-5 py-2.5 rounded-xl text-xs shadow-md transition">
+                                Order This Style
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Right: Technical Specification Breakdown -->
+                    <div class="lg:col-span-5 space-y-4 text-xs">
+                        
+                        <div class="bg-royal-900/90 p-5 rounded-2xl border border-royal-700 space-y-3">
+                            <h4 class="font-serif text-lg font-bold text-gold-300 border-b border-royal-700 pb-2">Technical Lash Mapping</h4>
+                            
+                            <div class="flex justify-between py-1 border-b border-white/5">
+                                <span class="text-royal-300">Inner-Center-Outer Length:</span>
+                                <span class="font-bold text-white" x-text="lashStyles[activeStyleKey].map"></span>
+                            </div>
+
+                            <div class="flex justify-between py-1 border-b border-white/5">
+                                <span class="text-royal-300">Curvature Type:</span>
+                                <span class="font-bold text-gold-400" x-text="lashStyles[activeStyleKey].curl"></span>
+                            </div>
+
+                            <div class="flex justify-between py-1 border-b border-white/5">
+                                <span class="text-royal-300">Recommended Band:</span>
+                                <span class="font-bold text-white" x-text="lashStyles[activeStyleKey].band"></span>
+                            </div>
+
+                            <div class="flex justify-between py-1">
+                                <span class="text-royal-300">Best For Target Market:</span>
+                                <span class="font-bold text-emerald-400" x-text="lashStyles[activeStyleKey].market"></span>
+                            </div>
+                        </div>
+
+                        <!-- Curl Reference Guide Trigger -->
+                        <div class="bg-royal-800/40 p-4 rounded-2xl border border-gold-500/20 text-center">
+                            <p class="text-royal-200 text-[11px] mb-2">Need custom length gradients or private label band thickness?</p>
+                            <button @click="openCertModal('Lash Curl & Thickness Specification Sheet')" class="text-gold-300 hover:text-white underline text-xs font-bold">
+                                <i class="fa-solid fa-ruler-horizontal mr-1"></i> Open Full Curl & Dimension Matrix Guide
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
     </section>
 
@@ -336,7 +532,7 @@
     <section id="products" class="py-20 bg-[#faf6fc]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-xs font-bold tracking-widest text-royal-600 uppercase">EXPORT CATALOG</span>
+                <span class="text-xs font-bold tracking-widest text-royal-700 uppercase">EXPORT CATALOG</span>
                 <h2 class="font-serif text-3xl sm:text-5xl font-bold text-royal-950 mt-2">
                     OUR EYELASH PRODUCTS
                 </h2>
@@ -347,23 +543,23 @@
                 <!-- Filter Buttons -->
                 <div class="flex flex-wrap justify-center gap-2 mt-8">
                     <button @click="productFilter = 'all'" 
-                            :class="productFilter === 'all' ? 'bg-royal-800 text-white' : 'bg-white text-slate-700 hover:bg-royal-100'"
-                            class="px-5 py-2 rounded-full text-xs font-medium transition shadow-sm">
+                            :class="productFilter === 'all' ? 'bg-royal-900 text-white shadow-md' : 'bg-white text-slate-700 hover:bg-royal-100'"
+                            class="px-5 py-2.5 rounded-full text-xs font-bold transition">
                         All Export Lines
                     </button>
                     <button @click="productFilter = 'strip'" 
-                            :class="productFilter === 'strip' ? 'bg-royal-800 text-white' : 'bg-white text-slate-700 hover:bg-royal-100'"
-                            class="px-5 py-2 rounded-full text-xs font-medium transition shadow-sm">
+                            :class="productFilter === 'strip' ? 'bg-royal-900 text-white shadow-md' : 'bg-white text-slate-700 hover:bg-royal-100'"
+                            class="px-5 py-2.5 rounded-full text-xs font-bold transition">
                         Strip Eyelashes
                     </button>
                     <button @click="productFilter = 'individual'" 
-                            :class="productFilter === 'individual' ? 'bg-royal-800 text-white' : 'bg-white text-slate-700 hover:bg-royal-100'"
-                            class="px-5 py-2 rounded-full text-xs font-medium transition shadow-sm">
+                            :class="productFilter === 'individual' ? 'bg-royal-900 text-white shadow-md' : 'bg-white text-slate-700 hover:bg-royal-100'"
+                            class="px-5 py-2.5 rounded-full text-xs font-bold transition">
                         Individual & Extensions
                     </button>
                     <button @click="productFilter = 'raw'" 
-                            :class="productFilter === 'raw' ? 'bg-royal-800 text-white' : 'bg-white text-slate-700 hover:bg-royal-100'"
-                            class="px-5 py-2 rounded-full text-xs font-medium transition shadow-sm">
+                            :class="productFilter === 'raw' ? 'bg-royal-900 text-white shadow-md' : 'bg-white text-slate-700 hover:bg-royal-100'"
+                            class="px-5 py-2.5 rounded-full text-xs font-bold transition">
                         Raw Materials & PBT
                     </button>
                 </div>
@@ -375,13 +571,13 @@
                 <!-- Product 1: Strip Eyelashes -->
                 <div x-show="productFilter === 'all' || productFilter === 'strip'"
                      x-transition
-                     class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition duration-300 border border-royal-100 flex flex-col group">
+                     class="bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition duration-500 border border-royal-100 flex flex-col group">
                     <div class="relative overflow-hidden h-64 bg-slate-100">
                         <img src="https://images.unsplash.com/photo-1597225244660-1cd128c64284?auto=format&fit=crop&w=800&q=80" 
                              alt="Strip Eyelashes" 
-                             class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                        <span class="absolute top-4 left-4 bg-royal-900/80 text-white text-[10px] uppercase font-bold tracking-wider px-3 py-1 rounded-full backdrop-blur-sm">
-                            Best Seller
+                             class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                        <span class="absolute top-4 left-4 bg-royal-950 text-gold-300 text-[10px] uppercase font-extrabold tracking-wider px-3 py-1.5 rounded-full shadow-md">
+                            Best Seller • 3D Silk
                         </span>
                     </div>
                     <div class="p-6 flex-1 flex flex-col justify-between">
@@ -390,20 +586,21 @@
                             <p class="text-slate-600 text-sm leading-relaxed mb-4">
                                 Lightweight, comfortable, and available in various styles for everyday and glamorous looks. Soft cotton band for seamless wear.
                             </p>
-                            <div class="text-xs text-royal-800 font-semibold space-y-1 mb-6 bg-royal-50 p-3 rounded-xl border border-royal-100">
-                                <p><i class="fa-solid fa-check text-gold-500 mr-2"></i>MOQ: 1,000 pairs</p>
-                                <p><i class="fa-solid fa-check text-gold-500 mr-2"></i>Material: 3D Silk / Faux Mink / Real Mink</p>
-                                <p><i class="fa-solid fa-check text-gold-500 mr-2"></i>Custom Packaging: Available</p>
+                            <div class="text-xs text-royal-900 font-semibold space-y-1.5 mb-6 bg-royal-50 p-4 rounded-2xl border border-royal-100">
+                                <p><i class="fa-solid fa-check text-gold-600 mr-2"></i>MOQ: 1,000 pairs</p>
+                                <p><i class="fa-solid fa-check text-gold-600 mr-2"></i>Est. Price: <span class="text-royal-950 font-bold" x-text="formatPrice(0.65)"></span> / pair</p>
+                                <p><i class="fa-solid fa-check text-gold-600 mr-2"></i>Material: 3D Silk / Faux Mink / Real Mink</p>
+                                <p><i class="fa-solid fa-check text-gold-600 mr-2"></i>Custom Packaging: Available</p>
                             </div>
                         </div>
 
                         <div class="flex items-center justify-between pt-4 border-t border-slate-100">
-                            <button @click="openQuickView('strip')" class="text-xs font-semibold text-royal-800 hover:text-royal-950 flex items-center gap-1">
+                            <button @click="openQuickView('strip')" class="text-xs font-bold text-royal-800 hover:text-royal-950 flex items-center gap-1.5">
                                 <i class="fa-solid fa-circle-info"></i> View Details
                             </button>
                             <button @click="openRFQModal('Strip Eyelashes Order')" 
-                                    class="w-10 h-10 rounded-full bg-royal-800 hover:bg-royal-900 text-white flex items-center justify-center shadow-md transition">
-                                <i class="fa-solid fa-arrow-right"></i>
+                                    class="w-11 h-11 rounded-full bg-royal-900 hover:bg-royal-950 text-white flex items-center justify-center shadow-md transition group-hover:scale-105">
+                                <i class="fa-solid fa-arrow-right text-gold-400"></i>
                             </button>
                         </div>
                     </div>
@@ -412,13 +609,13 @@
                 <!-- Product 2: Individual Eyelashes -->
                 <div x-show="productFilter === 'all' || productFilter === 'individual'"
                      x-transition
-                     class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition duration-300 border border-royal-100 flex flex-col group">
+                     class="bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition duration-500 border border-royal-100 flex flex-col group">
                     <div class="relative overflow-hidden h-64 bg-slate-100">
                         <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=800&q=80" 
                              alt="Individual Eyelashes" 
-                             class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                        <span class="absolute top-4 left-4 bg-gold-600 text-white text-[10px] uppercase font-bold tracking-wider px-3 py-1 rounded-full">
-                            Salon Grade
+                             class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                        <span class="absolute top-4 left-4 bg-gold-600 text-white text-[10px] uppercase font-extrabold tracking-wider px-3 py-1.5 rounded-full shadow-md">
+                            Salon Grade Extensions
                         </span>
                     </div>
                     <div class="p-6 flex-1 flex flex-col justify-between">
@@ -427,20 +624,21 @@
                             <p class="text-slate-600 text-sm leading-relaxed mb-4">
                                 Perfect for professional lash extensions and customized looks. Ultra-light, consistent curl, and long retention.
                             </p>
-                            <div class="text-xs text-royal-800 font-semibold space-y-1 mb-6 bg-royal-50 p-3 rounded-xl border border-royal-100">
-                                <p><i class="fa-solid fa-check text-gold-500 mr-2"></i>MOQ: 500 trays</p>
-                                <p><i class="fa-solid fa-check text-gold-500 mr-2"></i>Curls: J, B, C, CC, D, DD</p>
-                                <p><i class="fa-solid fa-check text-gold-500 mr-2"></i>Thickness: 0.03mm - 0.20mm</p>
+                            <div class="text-xs text-royal-900 font-semibold space-y-1.5 mb-6 bg-royal-50 p-4 rounded-2xl border border-royal-100">
+                                <p><i class="fa-solid fa-check text-gold-600 mr-2"></i>MOQ: 500 trays</p>
+                                <p><i class="fa-solid fa-check text-gold-600 mr-2"></i>Est. Price: <span class="text-royal-950 font-bold" x-text="formatPrice(1.85)"></span> / tray</p>
+                                <p><i class="fa-solid fa-check text-gold-600 mr-2"></i>Curls: J, B, C, CC, D, DD, L</p>
+                                <p><i class="fa-solid fa-check text-gold-600 mr-2"></i>Thickness: 0.03mm - 0.20mm</p>
                             </div>
                         </div>
 
                         <div class="flex items-center justify-between pt-4 border-t border-slate-100">
-                            <button @click="openQuickView('individual')" class="text-xs font-semibold text-royal-800 hover:text-royal-950 flex items-center gap-1">
+                            <button @click="openQuickView('individual')" class="text-xs font-bold text-royal-800 hover:text-royal-950 flex items-center gap-1.5">
                                 <i class="fa-solid fa-circle-info"></i> View Details
                             </button>
                             <button @click="openRFQModal('Individual Eyelashes Order')" 
-                                    class="w-10 h-10 rounded-full bg-royal-800 hover:bg-royal-900 text-white flex items-center justify-center shadow-md transition">
-                                <i class="fa-solid fa-arrow-right"></i>
+                                    class="w-11 h-11 rounded-full bg-royal-900 hover:bg-royal-950 text-white flex items-center justify-center shadow-md transition group-hover:scale-105">
+                                <i class="fa-solid fa-arrow-right text-gold-400"></i>
                             </button>
                         </div>
                     </div>
@@ -449,13 +647,13 @@
                 <!-- Product 3: Raw Eyelash Materials -->
                 <div x-show="productFilter === 'all' || productFilter === 'raw'"
                      x-transition
-                     class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition duration-300 border border-royal-100 flex flex-col group">
+                     class="bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition duration-500 border border-royal-100 flex flex-col group">
                     <div class="relative overflow-hidden h-64 bg-slate-100">
                         <img src="https://images.unsplash.com/photo-1526045612212-70caf35c14df?auto=format&fit=crop&w=800&q=80" 
                              alt="Raw Eyelash Materials" 
-                             class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                        <span class="absolute top-4 left-4 bg-royal-700 text-white text-[10px] uppercase font-bold tracking-wider px-3 py-1 rounded-full">
-                            B2B Bulk Raw
+                             class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                        <span class="absolute top-4 left-4 bg-royal-800 text-white text-[10px] uppercase font-extrabold tracking-wider px-3 py-1.5 rounded-full shadow-md">
+                            B2B Bulk Raw PBT
                         </span>
                     </div>
                     <div class="p-6 flex-1 flex flex-col justify-between">
@@ -464,20 +662,21 @@
                             <p class="text-slate-600 text-sm leading-relaxed mb-4">
                                 High-quality raw materials and loose fibers for beauty manufacturers, lash technicians, and private label brands.
                             </p>
-                            <div class="text-xs text-royal-800 font-semibold space-y-1 mb-6 bg-royal-50 p-3 rounded-xl border border-royal-100">
-                                <p><i class="fa-solid fa-check text-gold-500 mr-2"></i>MOQ: 5 kg / 10,000 loose clusters</p>
-                                <p><i class="fa-solid fa-check text-gold-500 mr-2"></i>Material: Premium Korean PBT Fiber</p>
-                                <p><i class="fa-solid fa-check text-gold-500 mr-2"></i>Sterilization: Heat Treatment Certified</p>
+                            <div class="text-xs text-royal-900 font-semibold space-y-1.5 mb-6 bg-royal-50 p-4 rounded-2xl border border-royal-100">
+                                <p><i class="fa-solid fa-check text-gold-600 mr-2"></i>MOQ: 5 kg / 10,000 loose clusters</p>
+                                <p><i class="fa-solid fa-check text-gold-600 mr-2"></i>Est. Price: <span class="text-royal-950 font-bold" x-text="formatPrice(42.00)"></span> / kg</p>
+                                <p><i class="fa-solid fa-check text-gold-600 mr-2"></i>Material: Korean Premium PBT Fiber</p>
+                                <p><i class="fa-solid fa-check text-gold-600 mr-2"></i>Sterilization: Heat Treatment Certified</p>
                             </div>
                         </div>
 
                         <div class="flex items-center justify-between pt-4 border-t border-slate-100">
-                            <button @click="openQuickView('raw')" class="text-xs font-semibold text-royal-800 hover:text-royal-950 flex items-center gap-1">
+                            <button @click="openQuickView('raw')" class="text-xs font-bold text-royal-800 hover:text-royal-950 flex items-center gap-1.5">
                                 <i class="fa-solid fa-circle-info"></i> View Details
                             </button>
                             <button @click="openRFQModal('Raw Materials Order')" 
-                                    class="w-10 h-10 rounded-full bg-royal-800 hover:bg-royal-900 text-white flex items-center justify-center shadow-md transition">
-                                <i class="fa-solid fa-arrow-right"></i>
+                                    class="w-11 h-11 rounded-full bg-royal-900 hover:bg-royal-950 text-white flex items-center justify-center shadow-md transition group-hover:scale-105">
+                                <i class="fa-solid fa-arrow-right text-gold-400"></i>
                             </button>
                         </div>
                     </div>
@@ -487,16 +686,16 @@
         </div>
     </section>
 
-    <!-- SECTION 4: INTERACTIVE PRIVATE LABEL OEM CONFIGURATOR (Key Buyer Conversion Feature) -->
-    <section id="customizer" class="py-20 bg-gradient-to-b from-royal-950 to-royal-900 text-white relative">
+    <!-- SECTION 4: INTERACTIVE PRIVATE LABEL OEM CONFIGURATOR -->
+    <section id="oem" class="py-20 bg-gradient-to-b from-royal-950 via-royal-900 to-royal-950 text-white relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center max-w-3xl mx-auto mb-14">
-                <span class="text-xs font-bold tracking-widest text-gold-400 uppercase">PRIVATE LABEL & OEM</span>
+                <span class="text-xs font-bold tracking-widest text-gold-400 uppercase">PRIVATE LABEL & OEM CONFIGURATOR</span>
                 <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white mt-2">
-                    Build Your Brand's Eyelashes
+                    Build Your Brand's Custom Eyelashes
                 </h2>
-                <p class="text-royal-200 mt-3 text-sm sm:text-base">
-                    Use our interactive configurator to specify your lash requirements. Generate an instant OEM proposal for your brand.
+                <p class="text-royal-200 mt-3 text-xs sm:text-sm">
+                    Configure material, band, curl, and packaging box finish in real-time. Generate an instant B2B pro-forma quote summary.
                 </p>
             </div>
 
@@ -510,106 +709,135 @@
                         <!-- Step 1: Material Selection -->
                         <div>
                             <label class="block text-xs font-bold uppercase tracking-wider text-gold-300 mb-2">1. Select Lash Material</label>
-                            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                                 <template x-for="mat in materials" :key="mat.id">
-                                    <button @click="config.material = mat.name" 
-                                            :class="config.material === mat.name ? 'border-gold-400 bg-royal-800 text-white' : 'border-white/20 bg-royal-950/40 text-royal-200 hover:bg-royal-800/50'"
-                                            class="p-3 rounded-xl border text-left text-xs font-medium transition flex flex-col justify-between h-20">
-                                        <span x-text="mat.name" class="font-semibold block"></span>
-                                        <span x-text="mat.desc" class="text-[10px] opacity-75"></span>
+                                    <button @click="config.material = mat.name; config.basePrice = mat.price" 
+                                            :class="config.material === mat.name ? 'border-gold-400 bg-royal-800 text-white ring-2 ring-gold-400/50' : 'border-white/20 bg-royal-950/40 text-royal-200 hover:bg-royal-800/50'"
+                                            class="p-3.5 rounded-2xl border text-left text-xs font-medium transition flex flex-col justify-between h-24">
+                                        <span x-text="mat.name" class="font-bold block text-white"></span>
+                                        <span x-text="mat.desc" class="text-[10px] opacity-80 leading-tight"></span>
                                     </button>
                                 </template>
                             </div>
                         </div>
 
-                        <!-- Step 2: Band & Style -->
+                        <!-- Step 2: Band & Curl -->
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
                                 <label class="block text-xs font-bold uppercase tracking-wider text-gold-300 mb-2">2. Band Type</label>
-                                <select x-model="config.band" class="w-full bg-royal-950/80 border border-white/20 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-gold-400">
-                                    <option value="Black Cotton Thread">Soft Black Cotton Thread</option>
+                                <select x-model="config.band" class="w-full bg-royal-950/90 border border-white/20 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-gold-400 font-medium">
+                                    <option value="Black Cotton Thread">Soft Black Cotton Thread (Comfort)</option>
                                     <option value="Clear TPU Invisible">Clear Invisible TPU Band</option>
-                                    <option value="Magnetic Band">Magnetic Band (5 Micro Magnets)</option>
+                                    <option value="Magnetic Band (5 Micro Magnets)">Magnetic Band (5 Micro Magnets)</option>
                                 </select>
                             </div>
                             <div>
                                 <label class="block text-xs font-bold uppercase tracking-wider text-gold-300 mb-2">3. Lash Curl</label>
-                                <select x-model="config.curl" class="w-full bg-royal-950/80 border border-white/20 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-gold-400">
+                                <select x-model="config.curl" class="w-full bg-royal-950/90 border border-white/20 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-gold-400 font-medium">
                                     <option value="C Curl (Natural Curve)">C Curl (Natural Curve)</option>
                                     <option value="D Curl (Glamour Lift)">D Curl (Glamour Lift)</option>
                                     <option value="CC Curl (Extra Volume)">CC Curl (Extra Volume)</option>
                                     <option value="J Curl (Subtle Extension)">J Curl (Subtle Extension)</option>
+                                    <option value="L Curl (Deep Monolid Lift)">L Curl (Deep Monolid Lift)</option>
                                 </select>
                             </div>
                         </div>
 
-                        <!-- Step 3: Length & Packaging -->
+                        <!-- Step 3: Packaging & Foil Finish -->
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
-                                <label class="block text-xs font-bold uppercase tracking-wider text-gold-300 mb-2">4. Length Range</label>
-                                <select x-model="config.length" class="w-full bg-royal-950/80 border border-white/20 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-gold-400">
-                                    <option value="Natural (8mm - 12mm)">Natural (8mm - 12mm)</option>
-                                    <option value="Medium Drama (10mm - 15mm)">Medium Drama (10mm - 15mm)</option>
-                                    <option value="Mega Volume (15mm - 22mm)">Mega Volume (15mm - 22mm)</option>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-gold-300 mb-2">4. Packaging Box Style</label>
+                                <select x-model="config.packaging" class="w-full bg-royal-950/90 border border-white/20 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-gold-400 font-medium">
+                                    <option value="Custom Magnetic Box with Window">Custom Magnetic Box with Window</option>
+                                    <option value="Eco Kraft Paper Drawer Box">Eco Kraft Paper Drawer Box</option>
+                                    <option value="Luxury Acrylic Crystal Case">Luxury Acrylic Crystal Case</option>
+                                    <option value="Clear Plastic Tray Only (Bulk Supply)">Clear Plastic Tray Only (Bulk Supply)</option>
                                 </select>
                             </div>
                             <div>
-                                <label class="block text-xs font-bold uppercase tracking-wider text-gold-300 mb-2">5. Custom Packaging</label>
-                                <select x-model="config.packaging" class="w-full bg-royal-950/80 border border-white/20 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-gold-400">
-                                    <option value="Custom Foil Stamped Magnetic Box">Custom Foil Stamped Box</option>
-                                    <option value="Eco-friendly Paper Sleeve Box">Eco-friendly Kraft Paper Box</option>
-                                    <option value="Clear Plastic Tray Only (Bulk)">Clear Tray Only (Bulk Supply)</option>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-gold-300 mb-2">5. Logo Stamping Finish</label>
+                                <select x-model="config.foilFinish" class="w-full bg-royal-950/90 border border-white/20 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-gold-400 font-medium">
+                                    <option value="Metallic Gold Foil">Metallic Gold Foil</option>
+                                    <option value="Rose Gold Foil">Rose Gold Foil</option>
+                                    <option value="Holographic Rainbow Foil">Holographic Rainbow Foil</option>
+                                    <option value="Matte Black Spot UV">Matte Black Spot UV</option>
                                 </select>
+                            </div>
+                        </div>
+
+                        <!-- Quantity Slider -->
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <label class="text-xs font-bold uppercase tracking-wider text-gold-300">6. Production Batch Quantity</label>
+                                <span class="text-xs font-bold text-white bg-royal-800 px-3 py-1 rounded-full border border-gold-500/30" x-text="config.quantity + ' pairs'"></span>
+                            </div>
+                            <input type="range" min="1000" max="25000" step="1000" x-model.number="config.quantity" 
+                                   class="w-full accent-gold-400 bg-royal-950 rounded-lg cursor-pointer h-2">
+                            <div class="flex justify-between text-[10px] text-royal-300 mt-1">
+                                <span>1,000 pairs (MOQ)</span>
+                                <span>10,000 pairs</span>
+                                <span>25,000+ pairs</span>
                             </div>
                         </div>
 
                     </div>
 
-                    <!-- Config Summary & Quote Right -->
-                    <div class="lg:col-span-5 bg-royal-950/90 rounded-2xl p-6 border border-gold-500/30 flex flex-col justify-between h-full">
+                    <!-- Config Summary & Interactive Preview Right -->
+                    <div class="lg:col-span-5 bg-royal-950/95 rounded-3xl p-6 border border-gold-500/40 flex flex-col justify-between h-full shadow-2xl">
                         <div>
                             <div class="flex justify-between items-center pb-4 border-b border-white/10">
-                                <h3 class="font-serif text-xl font-bold text-gold-300">Your OEM Specification</h3>
-                                <span class="bg-gold-500/20 text-gold-300 text-[10px] px-2.5 py-1 rounded-full uppercase font-semibold">Live Preview</span>
+                                <div>
+                                    <h3 class="font-serif text-xl font-bold text-gold-300">OEM Spec Summary</h3>
+                                    <p class="text-[10px] text-royal-200">Live Pro-Forma Estimate</p>
+                                </div>
+                                <span class="bg-gold-500/20 text-gold-300 text-[10px] px-3 py-1 rounded-full uppercase font-bold border border-gold-500/30">
+                                    Ready to Quote
+                                </span>
                             </div>
 
-                            <dl class="space-y-3 my-6 text-xs text-royal-100">
-                                <div class="flex justify-between">
-                                    <dt class="text-royal-300">Material:</dt>
-                                    <dd class="font-medium text-white" x-text="config.material"></dd>
+                            <!-- Packaging Foil Box Visual Representation -->
+                            <div class="my-5 p-4 rounded-2xl bg-gradient-to-r from-royal-900 to-royal-950 border border-gold-500/30 text-center relative overflow-hidden">
+                                <div class="absolute -right-10 -bottom-10 w-28 h-28 bg-gold-400/10 rounded-full blur-xl pointer-events-none"></div>
+                                <span class="text-[10px] text-royal-300 block uppercase font-bold tracking-widest mb-1">Packaging Render Preview</span>
+                                <div class="font-serif text-2xl font-bold text-gold-300 tracking-widest border border-gold-400/40 py-3 rounded-xl bg-royal-950/80 shadow-inner">
+                                    YOUR BRAND LOGO
                                 </div>
-                                <div class="flex justify-between">
-                                    <dt class="text-royal-300">Band:</dt>
-                                    <dd class="font-medium text-white" x-text="config.band"></dd>
+                                <p class="text-[10px] text-royal-200 mt-2 font-medium" x-text="config.packaging + ' • ' + config.foilFinish"></p>
+                            </div>
+
+                            <dl class="space-y-2.5 text-xs text-royal-100 my-4">
+                                <div class="flex justify-between py-1 border-b border-white/5">
+                                    <dt class="text-royal-300">Lash Fiber:</dt>
+                                    <dd class="font-bold text-white" x-text="config.material"></dd>
                                 </div>
-                                <div class="flex justify-between">
-                                    <dt class="text-royal-300">Curl Type:</dt>
-                                    <dd class="font-medium text-white" x-text="config.curl"></dd>
+                                <div class="flex justify-between py-1 border-b border-white/5">
+                                    <dt class="text-royal-300">Band & Curl:</dt>
+                                    <dd class="font-bold text-white" x-text="config.band + ' / ' + config.curl"></dd>
                                 </div>
-                                <div class="flex justify-between">
-                                    <dt class="text-royal-300">Length:</dt>
-                                    <dd class="font-medium text-white" x-text="config.length"></dd>
+                                <div class="flex justify-between py-1 border-b border-white/5">
+                                    <dt class="text-royal-300">Estimated Unit Cost:</dt>
+                                    <dd class="font-bold text-gold-400" x-text="formatPrice(calculateUnitCost()) + ' / pair'"></dd>
                                 </div>
-                                <div class="flex justify-between">
-                                    <dt class="text-royal-300">Packaging:</dt>
-                                    <dd class="font-medium text-white" x-text="config.packaging"></dd>
+                                <div class="flex justify-between py-1">
+                                    <dt class="text-royal-300">Total Est. Order Value:</dt>
+                                    <dd class="font-serif text-base font-bold text-white" x-text="formatPrice(calculateUnitCost() * config.quantity)"></dd>
                                 </div>
                             </dl>
 
-                            <div class="bg-royal-900/80 p-4 rounded-xl border border-royal-700 text-xs space-y-2">
-                                <div class="flex items-center text-gold-400 font-semibold gap-2">
+                            <div class="bg-royal-900/80 p-3.5 rounded-xl border border-royal-700 text-xs space-y-1.5">
+                                <div class="flex items-center text-gold-400 font-bold gap-2">
                                     <i class="fa-solid fa-truck-fast"></i>
-                                    <span>Estimated Lead Time: 14 - 21 Days</span>
+                                    <span>Production Lead Time: 14 - 21 Business Days</span>
                                 </div>
-                                <p class="text-royal-300 text-[11px]">Free physical sample box available for verified brand owners and global buyers.</p>
+                                <p class="text-royal-300 text-[11px]">Includes custom sample box approval prior to mass production run.</p>
                             </div>
                         </div>
 
-                        <div class="mt-8">
+                        <div class="mt-6 space-y-2">
                             <button @click="sendConfigRFQ()" 
-                                    class="w-full bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-400 hover:to-gold-500 text-royal-950 font-bold py-3.5 px-6 rounded-xl shadow-lg transition duration-300 text-sm flex items-center justify-center gap-2">
+                                    class="w-full bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600 hover:from-gold-300 hover:to-gold-500 text-royal-950 font-extrabold py-3.5 px-6 rounded-2xl shadow-xl transition duration-300 text-xs uppercase tracking-wider flex items-center justify-center gap-2">
                                 <i class="fa-solid fa-paper-plane"></i>
-                                <span>Send OEM RFQ Request</span>
+                                <span>Request Official OEM Proposal</span>
                             </button>
                         </div>
                     </div>
@@ -619,81 +847,83 @@
         </div>
     </section>
 
-    <!-- SECTION 5: WHY CHOOSE OUR EYELASHES (Matching Purple Grid from Image) -->
-    <section id="why-us" class="py-20 bg-gradient-to-br from-royal-900 via-royal-800 to-royal-950 text-white">
+    <!-- NEW FEATURE: SAMPLE KIT BUILDER SECTION -->
+    <section class="py-16 bg-white border-b border-royal-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-xs font-bold tracking-widest text-gold-400 uppercase">EXCELLENCE IN EXPORT</span>
-                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white mt-2">
-                    WHY CHOOSE OUR EYELASHES
-                </h2>
-                <div class="w-20 h-1 bg-gold-400 mx-auto mt-4 rounded-full"></div>
-            </div>
+            <div class="bg-gradient-to-br from-royal-50 via-white to-royal-50 rounded-3xl p-8 border border-royal-200/80 shadow-lg">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    
+                    <div class="lg:col-span-5 space-y-4">
+                        <span class="text-xs font-bold tracking-widest text-royal-700 uppercase">FREE B2B EXPORT SAMPLES</span>
+                        <h2 class="font-serif text-3xl font-bold text-royal-950">
+                            Build Your Physical Sample Box
+                        </h2>
+                        <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                            Verify our premium hand-crafted quality before placing bulk orders. Select 3 lash styles to receive in your export sample box.
+                        </p>
+                        
+                        <!-- Sample Box Selection Progress -->
+                        <div class="bg-white p-4 rounded-2xl border border-royal-100 space-y-2">
+                            <div class="flex justify-between text-xs font-bold text-royal-900">
+                                <span>Sample Box Slots:</span>
+                                <span x-text="sampleSelection.length + ' of 3 Styles Selected'"></span>
+                            </div>
+                            <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                                <div class="bg-gold-500 h-full transition-all duration-300" :style="'width: ' + (sampleSelection.length / 3 * 100) + '%'"></div>
+                            </div>
+                        </div>
 
-            <!-- 5 Key Pillars Grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
-                
-                <!-- Card 1 -->
-                <div class="bg-white/10 hover:bg-white/15 backdrop-blur-md p-6 rounded-2xl border border-white/10 text-center transition duration-300 hover:-translate-y-1">
-                    <div class="w-14 h-14 mx-auto rounded-2xl bg-gold-500/20 text-gold-400 flex items-center justify-center text-2xl mb-4">
-                        <i class="fa-solid fa-feather-pointed"></i>
+                        <button @click="openSampleKitModal()" 
+                                :disabled="sampleSelection.length === 0"
+                                :class="sampleSelection.length > 0 ? 'bg-royal-900 hover:bg-royal-950 text-white' : 'bg-slate-300 text-slate-500 cursor-not-allowed'"
+                                class="w-full py-3.5 px-6 rounded-2xl text-xs font-bold uppercase tracking-wider transition flex items-center justify-center gap-2 shadow-md">
+                            <i class="fa-solid fa-box-open"></i>
+                            <span>Ship Sample Kit to My Address</span>
+                        </button>
                     </div>
-                    <h3 class="font-serif text-lg font-bold text-white mb-2">Natural & High Quality Materials</h3>
-                    <p class="text-royal-200 text-xs leading-relaxed">Sourced from ultra-fine fibers and soft natural materials that blend seamlessly.</p>
-                </div>
 
-                <!-- Card 2 -->
-                <div class="bg-white/10 hover:bg-white/15 backdrop-blur-md p-6 rounded-2xl border border-white/10 text-center transition duration-300 hover:-translate-y-1">
-                    <div class="w-14 h-14 mx-auto rounded-2xl bg-gold-500/20 text-gold-400 flex items-center justify-center text-2xl mb-4">
-                        <i class="fa-solid fa-list-check"></i>
+                    <!-- Right Interactive Sample Selector Grid -->
+                    <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <template x-for="sample in sampleItems" :key="sample.id">
+                            <div @click="toggleSampleItem(sample.name)" 
+                                 :class="sampleSelection.includes(sample.name) ? 'border-gold-500 bg-royal-50/90 ring-2 ring-gold-400' : 'border-slate-200 bg-white hover:border-royal-300'"
+                                 class="p-4 rounded-2xl border cursor-pointer transition flex flex-col justify-between h-44 shadow-sm group">
+                                
+                                <div class="flex justify-between items-start">
+                                    <span class="text-[10px] font-bold text-royal-800 uppercase" x-text="sample.type"></span>
+                                    <div class="w-5 h-5 rounded-full border flex items-center justify-center text-[10px]"
+                                         :class="sampleSelection.includes(sample.name) ? 'bg-gold-500 text-royal-950 border-gold-500' : 'border-slate-300 text-transparent'">
+                                        <i class="fa-solid fa-check"></i>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <h4 class="font-serif text-lg font-bold text-royal-950 group-hover:text-royal-800" x-text="sample.name"></h4>
+                                    <p class="text-[10px] text-slate-500 mt-1" x-text="sample.desc"></p>
+                                </div>
+
+                                <span class="text-[10px] font-bold text-emerald-600 block">Sample Ready</span>
+                            </div>
+                        </template>
                     </div>
-                    <h3 class="font-serif text-lg font-bold text-white mb-2">Strict Quality Control</h3>
-                    <p class="text-royal-200 text-xs leading-relaxed">Multi-point inspection ensuring uniform curl, length, band flexibility and hygiene.</p>
-                </div>
 
-                <!-- Card 3 -->
-                <div class="bg-white/10 hover:bg-white/15 backdrop-blur-md p-6 rounded-2xl border border-white/10 text-center transition duration-300 hover:-translate-y-1">
-                    <div class="w-14 h-14 mx-auto rounded-2xl bg-gold-500/20 text-gold-400 flex items-center justify-center text-2xl mb-4">
-                        <i class="fa-solid fa-sliders"></i>
-                    </div>
-                    <h3 class="font-serif text-lg font-bold text-white mb-2">Customizable Options</h3>
-                    <p class="text-royal-200 text-xs leading-relaxed">Full OEM capability for private label printing, custom packaging & exclusive lash designs.</p>
                 </div>
-
-                <!-- Card 4 -->
-                <div class="bg-white/10 hover:bg-white/15 backdrop-blur-md p-6 rounded-2xl border border-white/10 text-center transition duration-300 hover:-translate-y-1">
-                    <div class="w-14 h-14 mx-auto rounded-2xl bg-gold-500/20 text-gold-400 flex items-center justify-center text-2xl mb-4">
-                        <i class="fa-solid fa-people-roof"></i>
-                    </div>
-                    <h3 class="font-serif text-lg font-bold text-white mb-2">Supporting Local Communities</h3>
-                    <p class="text-royal-200 text-xs leading-relaxed">Empowering Indonesian women artisans with fair wages and sustainable employment.</p>
-                </div>
-
-                <!-- Card 5 -->
-                <div class="bg-white/10 hover:bg-white/15 backdrop-blur-md p-6 rounded-2xl border border-white/10 text-center transition duration-300 hover:-translate-y-1 sm:col-span-2 lg:col-span-1">
-                    <div class="w-14 h-14 mx-auto rounded-2xl bg-gold-500/20 text-gold-400 flex items-center justify-center text-2xl mb-4">
-                        <i class="fa-solid fa-globe"></i>
-                    </div>
-                    <h3 class="font-serif text-lg font-bold text-white mb-2">Global Export Capability</h3>
-                    <p class="text-royal-200 text-xs leading-relaxed">Streamlined international logistics, customs documentation, and door-to-door air freight.</p>
-                </div>
-
             </div>
         </div>
     </section>
 
-    <!-- SECTION 6: EXPORT & SHIPPING CALCULATOR FOR INTERNATIONAL BUYERS -->
+    <!-- SECTION 5: EXPORT & SHIPPING CALCULATOR FOR INTERNATIONAL BUYERS -->
     <section id="calculator" class="py-20 bg-white border-b border-royal-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 
                 <div class="lg:col-span-5 space-y-6">
-                    <span class="text-xs font-bold tracking-widest text-royal-600 uppercase">LOGISTICS ESTIMATOR</span>
+                    <span class="text-xs font-bold tracking-widest text-royal-700 uppercase">LOGISTICS & FREIGHT ESTIMATOR</span>
                     <h2 class="font-serif text-3xl sm:text-4xl font-bold text-royal-950">
-                        Global Trade & Shipping Estimator
+                        Global Freight & Duty Estimator
                     </h2>
                     <p class="text-slate-600 leading-relaxed text-sm">
-                        Plan your import volume efficiently. Calculate estimated volumetric weight, CBM, and shipping timelines directly from our Jakarta / Central Java factory.
+                        Plan your import volume efficiently. Calculate estimated volumetric weight, CBM, and air/sea shipping timelines directly from our Central Java factory.
                     </p>
                     
                     <div class="space-y-3 pt-2">
@@ -707,7 +937,7 @@
                         </div>
                         <div class="flex items-center gap-3 text-xs text-slate-700">
                             <i class="fa-solid fa-circle-check text-gold-500 text-base"></i>
-                            <span>Zero Export Tariff Duty Benefits for Qualified Countries</span>
+                            <span>HS Code Tariff Reference: 3926.90.99 / 6704.19</span>
                         </div>
                     </div>
                 </div>
@@ -717,15 +947,15 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         
                         <div>
-                            <label class="block text-xs font-bold uppercase text-royal-900 mb-2">Order Volume (Pairs)</label>
+                            <label class="block text-xs font-bold uppercase text-royal-950 mb-2">Order Volume (Pairs)</label>
                             <input type="number" x-model.number="calcQuantity" min="500" step="500" 
-                                   class="w-full bg-white border border-royal-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-royal-700 font-semibold text-royal-950">
+                                   class="w-full bg-white border border-royal-200 rounded-2xl px-4 py-3 text-sm focus:outline-none focus:border-royal-700 font-bold text-royal-950">
                             <span class="text-[10px] text-slate-500 mt-1 block">Min. Wholesale order: 500 pairs</span>
                         </div>
 
                         <div>
-                            <label class="block text-xs font-bold uppercase text-royal-900 mb-2">Destination Region</label>
-                            <select x-model="calcRegion" class="w-full bg-white border border-royal-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-royal-700 font-semibold text-royal-950">
+                            <label class="block text-xs font-bold uppercase text-royal-950 mb-2">Destination Region</label>
+                            <select x-model="calcRegion" class="w-full bg-white border border-royal-200 rounded-2xl px-4 py-3 text-sm focus:outline-none focus:border-royal-700 font-bold text-royal-950">
                                 <option value="North America (USA / Canada)">North America (USA / Canada)</option>
                                 <option value="Europe / UK">Europe / UK</option>
                                 <option value="Asia Pacific & Australia">Asia Pacific & Australia</option>
@@ -737,7 +967,7 @@
 
                     <!-- Calculated Output Box -->
                     <div class="mt-8 bg-white p-6 rounded-2xl border border-royal-200/80 shadow-sm">
-                        <h4 class="text-xs font-bold text-royal-900 uppercase tracking-wider mb-4 border-b border-slate-100 pb-2">Estimated Trade Details</h4>
+                        <h4 class="text-xs font-bold text-royal-950 uppercase tracking-wider mb-4 border-b border-slate-100 pb-2">Estimated Trade Details</h4>
                         
                         <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 text-xs">
                             <div>
@@ -749,18 +979,18 @@
                                 <span class="text-base font-bold text-royal-950" x-text="(calcQuantity * 0.00018).toFixed(3) + ' CBM'"></span>
                             </div>
                             <div>
-                                <span class="text-slate-500 block">Lead Time:</span>
-                                <span class="text-base font-bold text-royal-950" x-text="calcQuantity > 5000 ? '18-25 Days' : '10-14 Days'"></span>
+                                <span class="text-slate-500 block">Air Lead Time:</span>
+                                <span class="text-base font-bold text-royal-950" x-text="calcQuantity > 5000 ? '18-22 Days' : '10-14 Days'"></span>
                             </div>
                         </div>
 
                         <div class="mt-6 pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
                             <div class="text-xs text-slate-600">
-                                <span class="font-bold text-royal-900" x-text="calcQuantity >= 1000 ? 'Eligible for Free Sample Kit' : 'Standard Sample Rates Apply'"></span>
+                                <span class="font-bold text-royal-900" x-text="calcQuantity >= 1000 ? 'Eligible for Free Express Sample Kit' : 'Standard Sample Rates Apply'"></span>
                             </div>
-                            <button @click="openRFQModal('Calculator Inquiry - ' + calcQuantity + ' pairs')" 
-                                    class="w-full sm:w-auto bg-royal-800 hover:bg-royal-900 text-white text-xs font-bold px-6 py-3 rounded-xl transition">
-                                Request Official Freight Quote
+                            <button @click="openRFQModal('Calculator Freight Inquiry - ' + calcQuantity + ' pairs')" 
+                                    class="w-full sm:w-auto bg-royal-900 hover:bg-royal-950 text-white text-xs font-bold px-6 py-3 rounded-xl transition">
+                                Get Official Freight Quote
                             </button>
                         </div>
                     </div>
@@ -770,13 +1000,71 @@
         </div>
     </section>
 
-    <!-- SECTION 7: GLOBAL BEAUTY OPPORTUNITIES (Matching Product Packaging Box Image) -->
+    <!-- SECTION 6: WHY CHOOSE OUR EYELASHES (Matching Purple Grid from Image) -->
+    <section id="why-us" class="py-20 bg-gradient-to-br from-royal-950 via-royal-900 to-royal-950 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-bold tracking-widest text-gold-400 uppercase">EXCELLENCE IN EXPORT</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white mt-2">
+                    WHY CHOOSE OUR EYELASHES
+                </h2>
+                <div class="w-20 h-1 bg-gold-400 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- 5 Key Pillars Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+                
+                <div class="bg-white/10 hover:bg-white/15 backdrop-blur-md p-6 rounded-2xl border border-white/10 text-center transition duration-300 hover:-translate-y-1">
+                    <div class="w-14 h-14 mx-auto rounded-2xl bg-gold-500/20 text-gold-400 flex items-center justify-center text-2xl mb-4">
+                        <i class="fa-solid fa-feather-pointed"></i>
+                    </div>
+                    <h3 class="font-serif text-lg font-bold text-white mb-2">Natural High Quality</h3>
+                    <p class="text-royal-200 text-xs leading-relaxed">Sourced from ultra-fine fibers and soft natural materials that blend seamlessly.</p>
+                </div>
+
+                <div class="bg-white/10 hover:bg-white/15 backdrop-blur-md p-6 rounded-2xl border border-white/10 text-center transition duration-300 hover:-translate-y-1">
+                    <div class="w-14 h-14 mx-auto rounded-2xl bg-gold-500/20 text-gold-400 flex items-center justify-center text-2xl mb-4">
+                        <i class="fa-solid fa-list-check"></i>
+                    </div>
+                    <h3 class="font-serif text-lg font-bold text-white mb-2">Strict Quality Control</h3>
+                    <p class="text-royal-200 text-xs leading-relaxed">Multi-point inspection ensuring uniform curl, length, band flexibility and hygiene.</p>
+                </div>
+
+                <div class="bg-white/10 hover:bg-white/15 backdrop-blur-md p-6 rounded-2xl border border-white/10 text-center transition duration-300 hover:-translate-y-1">
+                    <div class="w-14 h-14 mx-auto rounded-2xl bg-gold-500/20 text-gold-400 flex items-center justify-center text-2xl mb-4">
+                        <i class="fa-solid fa-sliders"></i>
+                    </div>
+                    <h3 class="font-serif text-lg font-bold text-white mb-2">Customizable Options</h3>
+                    <p class="text-royal-200 text-xs leading-relaxed">Full OEM capability for private label printing, custom packaging & exclusive lash designs.</p>
+                </div>
+
+                <div class="bg-white/10 hover:bg-white/15 backdrop-blur-md p-6 rounded-2xl border border-white/10 text-center transition duration-300 hover:-translate-y-1">
+                    <div class="w-14 h-14 mx-auto rounded-2xl bg-gold-500/20 text-gold-400 flex items-center justify-center text-2xl mb-4">
+                        <i class="fa-solid fa-people-roof"></i>
+                    </div>
+                    <h3 class="font-serif text-lg font-bold text-white mb-2">Supporting Local Communities</h3>
+                    <p class="text-royal-200 text-xs leading-relaxed">Empowering Indonesian women artisans with fair wages and sustainable employment.</p>
+                </div>
+
+                <div class="bg-white/10 hover:bg-white/15 backdrop-blur-md p-6 rounded-2xl border border-white/10 text-center transition duration-300 hover:-translate-y-1 sm:col-span-2 lg:col-span-1">
+                    <div class="w-14 h-14 mx-auto rounded-2xl bg-gold-500/20 text-gold-400 flex items-center justify-center text-2xl mb-4">
+                        <i class="fa-solid fa-globe"></i>
+                    </div>
+                    <h3 class="font-serif text-lg font-bold text-white mb-2">Global Export Capability</h3>
+                    <p class="text-royal-200 text-xs leading-relaxed">Streamlined international logistics, customs documentation, and door-to-door air freight.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 7: GLOBAL BEAUTY OPPORTUNITIES -->
     <section class="py-20 bg-gradient-to-br from-[#f8f2fb] to-[#eedef5]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 
                 <div class="lg:col-span-6 space-y-6">
-                    <span class="text-xs font-bold tracking-widest text-royal-600 uppercase block">GLOBAL BEAUTY OPPORTUNITIES</span>
+                    <span class="text-xs font-bold tracking-widest text-royal-700 uppercase block">GLOBAL BEAUTY OPPORTUNITIES</span>
                     <h2 class="font-serif text-3xl sm:text-5xl font-bold text-royal-950 leading-tight">
                         Enhancing Beauty.<br>Creating Greater Opportunities.
                     </h2>
@@ -785,13 +1073,13 @@
                     </p>
 
                     <div class="grid grid-cols-2 gap-4 pt-4">
-                        <div class="bg-white p-4 rounded-xl border border-royal-200/60 shadow-sm">
-                            <span class="block font-serif text-2xl font-bold text-royal-900">30+</span>
-                            <span class="text-xs text-slate-600">Export Partner Countries</span>
+                        <div class="bg-white p-5 rounded-2xl border border-royal-200/80 shadow-sm">
+                            <span class="block font-serif text-3xl font-bold text-royal-950">35+</span>
+                            <span class="text-xs text-slate-600 font-medium">Export Partner Countries</span>
                         </div>
-                        <div class="bg-white p-4 rounded-xl border border-royal-200/60 shadow-sm">
-                            <span class="block font-serif text-2xl font-bold text-royal-900">5M+</span>
-                            <span class="text-xs text-slate-600">Pairs Exported Annually</span>
+                        <div class="bg-white p-5 rounded-2xl border border-royal-200/80 shadow-sm">
+                            <span class="block font-serif text-3xl font-bold text-royal-950">5M+</span>
+                            <span class="text-xs text-slate-600 font-medium">Pairs Exported Annually</span>
                         </div>
                     </div>
                 </div>
@@ -806,7 +1094,7 @@
                         </div>
 
                         <!-- Badge Script Text Over Image (Matches "More Beauty Brighter Futures" script font) -->
-                        <div class="absolute -bottom-6 -left-6 bg-royal-900 text-white p-6 rounded-2xl border border-royal-700 shadow-xl max-w-xs transform rotate-[2deg]">
+                        <div class="absolute -bottom-6 -left-6 bg-royal-950 text-white p-6 rounded-2xl border border-royal-700 shadow-2xl max-w-xs transform rotate-[2deg]">
                             <span class="font-script text-3xl text-gold-300 block">More Beauty</span>
                             <span class="font-script text-3xl text-white block">Brighter Futures</span>
                         </div>
@@ -817,17 +1105,17 @@
         </div>
     </section>
 
-    <!-- SECTION 8: BOTTOM CTA BANNER (Matching bottom banner from image) -->
+    <!-- SECTION 8: BOTTOM CTA BANNER -->
     <section class="py-16 bg-gradient-to-r from-royal-950 via-royal-900 to-royal-950 text-white relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white mb-4">
+            <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white mb-4">
                 Let's Build a More Beautiful Tomorrow Together
             </h2>
             <p class="text-royal-200 max-w-2xl mx-auto text-sm sm:text-base mb-8">
                 We welcome partners, distributors, and clients worldwide who share our vision for quality, ethical sourcing, and positive impact.
             </p>
             <button @click="openRFQModal('Bottom Banner Partner')" 
-                    class="bg-gold-500 hover:bg-gold-400 text-royal-950 font-bold px-10 py-4 rounded-full shadow-lg hover:shadow-xl transition duration-300 text-sm tracking-wide uppercase inline-flex items-center gap-2 group">
+                    class="bg-gold-500 hover:bg-gold-400 text-royal-950 font-bold px-10 py-4 rounded-full shadow-xl hover:shadow-2xl transition duration-300 text-xs tracking-wider uppercase inline-flex items-center gap-2 group">
                 <span>Partner With Us</span>
                 <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition"></i>
             </button>
@@ -841,20 +1129,20 @@
                 
                 <!-- Logo -->
                 <a href="#" class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-full bg-royal-900 flex items-center justify-center text-gold-400">
+                    <div class="w-10 h-10 rounded-2xl bg-royal-950 flex items-center justify-center text-gold-400">
                         <i class="fa-solid fa-crown text-base"></i>
                     </div>
                     <div>
                         <span class="block font-serif text-lg font-bold text-royal-950 uppercase leading-none">Royal Grace Global</span>
-                        <span class="text-[9px] tracking-widest text-royal-600 uppercase font-medium">Bridging Nations, Enriching Lives</span>
+                        <span class="text-[9px] tracking-widest text-royal-600 uppercase font-medium">Bridging Nations • Enriching Lives</span>
                     </div>
                 </a>
 
                 <!-- Social Icons -->
                 <div class="flex items-center space-x-4 text-royal-800 text-lg">
-                    <a href="#" class="w-9 h-9 rounded-full bg-royal-50 hover:bg-royal-800 hover:text-white flex items-center justify-center transition"><i class="fa-brands fa-linkedin-in text-sm"></i></a>
-                    <a href="#" class="w-9 h-9 rounded-full bg-royal-50 hover:bg-royal-800 hover:text-white flex items-center justify-center transition"><i class="fa-brands fa-instagram text-sm"></i></a>
-                    <a href="#" class="w-9 h-9 rounded-full bg-royal-50 hover:bg-royal-800 hover:text-white flex items-center justify-center transition"><i class="fa-brands fa-youtube text-sm"></i></a>
+                    <a href="#" class="w-9 h-9 rounded-full bg-royal-50 hover:bg-royal-900 hover:text-white flex items-center justify-center transition"><i class="fa-brands fa-linkedin-in text-xs"></i></a>
+                    <a href="#" class="w-9 h-9 rounded-full bg-royal-50 hover:bg-royal-900 hover:text-white flex items-center justify-center transition"><i class="fa-brands fa-instagram text-xs"></i></a>
+                    <a href="#" class="w-9 h-9 rounded-full bg-royal-50 hover:bg-royal-900 hover:text-white flex items-center justify-center transition"><i class="fa-brands fa-youtube text-xs"></i></a>
                 </div>
 
                 <!-- Footer Tagline -->
@@ -866,11 +1154,11 @@
 
             <!-- Footer Links & Copyright -->
             <div class="flex flex-col sm:flex-row justify-between items-center gap-4 pt-8 text-slate-500">
-                <nav class="flex flex-wrap justify-center gap-6 font-medium text-slate-700">
+                <nav class="flex flex-wrap justify-center gap-6 font-semibold text-slate-700">
                     <a href="#" class="hover:text-royal-800">Home</a>
                     <a href="#about" class="hover:text-royal-800">About Us</a>
                     <a href="#products" class="hover:text-royal-800">Our Products</a>
-                    <a href="#customizer" class="hover:text-royal-800">Global Partnership</a>
+                    <a href="#oem" class="hover:text-royal-800">Global Partnership</a>
                     <a href="#craftsmanship" class="hover:text-royal-800">Sustainability</a>
                     <a href="#calculator" class="hover:text-royal-800">Contact</a>
                 </nav>
@@ -896,7 +1184,7 @@
          x-transition:leave="transition ease-in duration-200"
          x-transition:leave-start="opacity-100"
          x-transition:leave-end="opacity-0"
-         class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-royal-950/70 backdrop-blur-sm"
+         class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-royal-950/75 backdrop-blur-md"
          style="display: none;">
         
         <div @click.away="rfqModalOpen = false" 
@@ -907,19 +1195,19 @@
             </button>
 
             <div class="flex items-center gap-3 mb-4">
-                <div class="w-10 h-10 rounded-full bg-royal-100 text-royal-800 flex items-center justify-center">
-                    <i class="fa-solid fa-paper-plane text-base"></i>
+                <div class="w-11 h-11 rounded-2xl bg-royal-100 text-royal-900 flex items-center justify-center font-bold">
+                    <i class="fa-solid fa-paper-plane text-lg"></i>
                 </div>
                 <div>
-                    <h3 class="font-serif text-2xl font-bold text-royal-950">Export Inquiry & Quotation</h3>
+                    <h3 class="font-serif text-2xl font-bold text-royal-950">Export Quotation Request</h3>
                     <p class="text-xs text-slate-500">Royal Grace Global B2B Export Department</p>
                 </div>
             </div>
 
             <form @submit.prevent="submitRFQ()" class="space-y-4">
                 <div>
-                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Inquiry Subject / Product</label>
-                    <input type="text" x-model="rfqSubject" readonly class="w-full bg-slate-100 border border-slate-200 rounded-xl px-4 py-2.5 text-xs font-semibold text-royal-900 focus:outline-none">
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Inquiry Subject / Specification</label>
+                    <input type="text" x-model="rfqSubject" readonly class="w-full bg-slate-100 border border-slate-200 rounded-xl px-4 py-2.5 text-xs font-bold text-royal-950 focus:outline-none">
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -929,7 +1217,7 @@
                     </div>
                     <div>
                         <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Business Email *</label>
-                        <input type="email" required placeholder="john@brand.com" x-model="rfqForm.email" class="w-full border border-slate-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:border-royal-700">
+                        <input type="email" required placeholder="john@beautybrand.com" x-model="rfqForm.email" class="w-full border border-slate-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:border-royal-700">
                     </div>
                 </div>
 
@@ -939,31 +1227,108 @@
                         <input type="text" placeholder="Luxe Beauty LLC" x-model="rfqForm.company" class="w-full border border-slate-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:border-royal-700">
                     </div>
                     <div>
-                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Country / Destination *</label>
-                        <input type="text" required placeholder="United States, UK, Japan, etc." x-model="rfqForm.country" class="w-full border border-slate-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:border-royal-700">
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Destination Country / Port *</label>
+                        <input type="text" required placeholder="USA, UK, UAE, Japan..." x-model="rfqForm.country" class="w-full border border-slate-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:border-royal-700">
                     </div>
                 </div>
 
                 <div>
-                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Estimated Order Volume / Details *</label>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Estimated Order Volume / Requirements *</label>
                     <textarea rows="3" required placeholder="Specify pair count, packaging requirements, target delivery timeline..." x-model="rfqForm.message" class="w-full border border-slate-200 rounded-xl p-4 text-xs focus:outline-none focus:border-royal-700"></textarea>
                 </div>
 
-                <button type="submit" class="w-full bg-royal-800 hover:bg-royal-900 text-white font-bold py-3.5 rounded-xl shadow-lg transition duration-300 text-xs uppercase tracking-wider">
+                <button type="submit" class="w-full bg-royal-900 hover:bg-royal-950 text-white font-bold py-3.5 rounded-xl shadow-lg transition duration-300 text-xs uppercase tracking-wider">
                     Submit Export Inquiry Now
                 </button>
 
                 <p class="text-[10px] text-center text-slate-500">
-                    <i class="fa-solid fa-lock mr-1"></i> Your privacy is protected. We respond to all export inquiries within 12 business hours.
+                    <i class="fa-solid fa-lock mr-1"></i> Your information is secure. We guarantee responses within 12 business hours.
                 </p>
             </form>
         </div>
     </div>
 
-    <!-- MODAL 2: QUICK VIEW PRODUCT DETAILS -->
+    <!-- MODAL 2: CERTIFICATE & SPEC SHEET VIEWER -->
+    <div x-show="certModalOpen" 
+         x-transition
+         class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-royal-950/80 backdrop-blur-md"
+         style="display: none;">
+        
+        <div @click.away="certModalOpen = false" 
+             class="bg-white rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-2xl relative border border-royal-100">
+            
+            <button @click="certModalOpen = false" class="absolute top-5 right-5 text-slate-400 hover:text-slate-700 p-2 text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="text-center space-y-4">
+                <div class="w-16 h-16 rounded-full bg-royal-100 text-royal-900 mx-auto flex items-center justify-center text-2xl font-bold">
+                    <i class="fa-solid fa-certificate text-gold-600"></i>
+                </div>
+
+                <h3 class="font-serif text-2xl font-bold text-royal-950" x-text="activeCertTitle"></h3>
+                <p class="text-xs text-slate-600 leading-relaxed">Verified trade documentation issued under Republic of Indonesia Ministry of Trade and ISO Quality Governance standards.</p>
+
+                <div class="p-6 bg-royal-50 rounded-2xl border border-royal-200 text-left space-y-2 text-xs">
+                    <div class="flex justify-between border-b border-royal-200 pb-2">
+                        <span class="text-slate-500">Issuing Authority:</span>
+                        <span class="font-bold text-royal-950">Sucofindo / Ministry of Industry ID</span>
+                    </div>
+                    <div class="flex justify-between border-b border-royal-200 pb-2">
+                        <span class="text-slate-500">Document Status:</span>
+                        <span class="font-bold text-emerald-600">Active & Verified 2026</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-slate-500">Scope:</span>
+                        <span class="font-bold text-royal-950">Global Lash & Beauty Product Exports</span>
+                    </div>
+                </div>
+
+                <div class="pt-2 flex justify-center gap-3">
+                    <button @click="certModalOpen = false" class="px-6 py-2.5 rounded-xl bg-royal-900 text-white text-xs font-bold">Close Preview</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 3: FACTORY VIDEO TOUR MODAL -->
+    <div x-show="videoModalOpen" 
+         x-transition
+         class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-royal-950/90 backdrop-blur-md"
+         style="display: none;">
+        
+        <div @click.away="videoModalOpen = false" 
+             class="bg-black rounded-3xl max-w-3xl w-full p-4 relative border border-gold-500/30 overflow-hidden shadow-2xl">
+            
+            <button @click="videoModalOpen = false" class="absolute top-4 right-4 text-white hover:text-gold-400 p-2 text-xl z-20">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="relative pt-[56.25%] rounded-2xl overflow-hidden bg-slate-900">
+                <iframe class="absolute inset-0 w-full h-full" 
+                        src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?autoplay=0&controls=1" 
+                        title="Factory Tour Video" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen></iframe>
+            </div>
+            
+            <div class="p-4 text-white flex justify-between items-center text-xs">
+                <div>
+                    <h4 class="font-serif text-base font-bold text-gold-300">Indonesian Lash Craftsmanship Process</h4>
+                    <p class="text-[11px] text-slate-400">Purbalingga Manufacturing Plant, Central Java</p>
+                </div>
+                <button @click="videoModalOpen = false; openRFQModal('Video Inquiry')" class="bg-gold-500 text-royal-950 font-bold px-4 py-2 rounded-xl text-xs">
+                    Inquire Factory Direct
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 4: QUICK VIEW PRODUCT DETAILS -->
     <div x-show="quickViewOpen" 
          x-transition
-         class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-royal-950/70 backdrop-blur-sm"
+         class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-royal-950/80 backdrop-blur-md"
          style="display: none;">
         
         <div @click.away="quickViewOpen = false" 
@@ -976,23 +1341,23 @@
             <template x-if="activeProduct">
                 <div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 items-center">
-                        <img :src="activeProduct.image" :alt="activeProduct.title" class="w-full h-56 object-cover rounded-2xl border border-slate-100">
+                        <img :src="activeProduct.image" :alt="activeProduct.title" class="w-full h-60 object-cover rounded-2xl border border-slate-100">
                         <div>
-                            <span class="text-[10px] font-bold text-gold-600 uppercase tracking-widest block">Export Specification</span>
+                            <span class="text-[10px] font-extrabold text-gold-600 uppercase tracking-widest block">Export Specification</span>
                             <h3 class="font-serif text-2xl font-bold text-royal-950" x-text="activeProduct.title"></h3>
                             <p class="text-xs text-slate-600 mt-2 leading-relaxed" x-text="activeProduct.description"></p>
                             
-                            <div class="mt-4 space-y-1 text-xs">
+                            <div class="mt-4 space-y-1.5 text-xs bg-royal-50 p-3.5 rounded-xl border border-royal-100">
                                 <p><strong>Material:</strong> <span x-text="activeProduct.material"></span></p>
                                 <p><strong>Packaging:</strong> <span x-text="activeProduct.packaging"></span></p>
-                                <p><strong>Standard Lead Time:</strong> 14 Days</p>
+                                <p><strong>Standard Lead Time:</strong> 14 Business Days</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="mt-6 pt-6 border-t border-slate-100 flex justify-end gap-3">
                         <button @click="quickViewOpen = false" class="px-5 py-2.5 rounded-xl border border-slate-200 text-xs font-semibold text-slate-700">Close</button>
-                        <button @click="quickViewOpen = false; openRFQModal('Order Inquiry: ' + activeProduct.title)" class="px-6 py-2.5 rounded-xl bg-royal-800 text-white text-xs font-bold">Request Quotation</button>
+                        <button @click="quickViewOpen = false; openRFQModal('Order Inquiry: ' + activeProduct.title)" class="px-6 py-2.5 rounded-xl bg-royal-900 text-white text-xs font-bold">Request Official Quotation</button>
                     </div>
                 </div>
             </template>
@@ -1002,7 +1367,7 @@
     <!-- Toast Notification -->
     <div x-show="toast.show" 
          x-transition
-         class="fixed bottom-6 right-6 z-50 bg-royal-900 text-white px-6 py-4 rounded-2xl shadow-2xl flex items-center gap-3 border border-gold-400/40"
+         class="fixed bottom-6 right-6 z-50 bg-royal-950 text-white px-6 py-4 rounded-2xl shadow-2xl flex items-center gap-3 border border-gold-400/50"
          style="display: none;">
         <i class="fa-solid fa-circle-check text-gold-400 text-xl"></i>
         <div>
@@ -1017,12 +1382,79 @@
                 mobileMenuOpen: false,
                 rfqModalOpen: false,
                 quickViewOpen: false,
+                certModalOpen: false,
+                videoModalOpen: false,
+                
                 productFilter: 'all',
                 currency: 'USD',
+                currencySymbol: '$',
+                currencyRate: 1.0,
+                
                 rfqSubject: '',
+                activeCertTitle: '',
+                
                 calcQuantity: 2000,
                 calcRegion: 'North America (USA / Canada)',
                 
+                sampleSelection: [],
+                
+                config: {
+                    material: '3D Faux Mink (Silk)',
+                    basePrice: 0.65,
+                    band: 'Black Cotton Thread',
+                    curl: 'C Curl (Natural Curve)',
+                    packaging: 'Custom Magnetic Box with Window',
+                    foilFinish: 'Metallic Gold Foil',
+                    quantity: 3000
+                },
+
+                materials: [
+                    { id: 1, name: '3D Faux Mink (Silk)', desc: 'Ultra-soft, cruelty-free synthetic silk', price: 0.65 },
+                    { id: 2, name: '100% Real Mink Fiber', desc: 'Premium luxury natural luster', price: 1.25 },
+                    { id: 3, name: 'Plant-based Eco Fiber', desc: '100% biodegradable sustainable lash', price: 0.85 }
+                ],
+
+                activeStyleKey: 'natural',
+
+                lashStyles: {
+                    natural: {
+                        name: 'Natural Everyday',
+                        badge: 'Daily Soft Wear',
+                        tagline: 'Feather-light soft gradient for daily subtlety',
+                        map: '8mm - 10mm - 12mm',
+                        curl: 'C Curl (30° Curve)',
+                        band: 'Soft Black Cotton',
+                        market: 'North America & Europe retail',
+                        image: 'https://images.unsplash.com/photo-1583001809873-a1284d5630be?auto=format&fit=crop&w=800&q=80'
+                    },
+                    glamour: {
+                        name: 'Glamour Volume',
+                        badge: '3D Layered Volume',
+                        tagline: 'Multi-layer dimensional lash for photo shoots & events',
+                        map: '10mm - 14mm - 16mm',
+                        curl: 'D Curl (45° High Lift)',
+                        band: 'Clear TPU Invisible',
+                        market: 'Middle East & Global Salon Chains',
+                        image: 'https://images.unsplash.com/photo-1597225244660-1cd128c64284?auto=format&fit=crop&w=800&q=80'
+                    },
+                    wispy: {
+                        name: 'Wispy Cat Eye',
+                        badge: 'Elongated Flare',
+                        tagline: 'Fanned outer corners creating an alluring cat-eye effect',
+                        map: '9mm - 13mm - 17mm',
+                        curl: 'CC Curl (Dynamic Curl)',
+                        band: 'Flexible Cotton Thread',
+                        market: 'Gen-Z & E-commerce Brands',
+                        image: 'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=800&q=80'
+                    }
+                },
+
+                sampleItems: [
+                    { id: 1, name: '3D Silk Strip Sample', type: 'Strip Lash', desc: '0.07mm taper soft cotton' },
+                    { id: 2, name: 'Individual Extension Tray', type: 'Salon Tray', desc: 'C Curl 0.05mm multi-length' },
+                    { id: 3, name: 'Plant-Eco Lash Cluster', type: 'Eco Series', desc: '100% biodegradable fiber' }
+                ],
+
                 rfqForm: {
                     name: '',
                     email: '',
@@ -1036,20 +1468,6 @@
                     title: '',
                     message: ''
                 },
-
-                config: {
-                    material: '3D Faux Mink (Silk)',
-                    band: 'Black Cotton Thread',
-                    curl: 'C Curl (Natural Curve)',
-                    length: 'Natural (8mm - 12mm)',
-                    packaging: 'Custom Foil Stamped Magnetic Box'
-                },
-
-                materials: [
-                    { id: 1, name: '3D Faux Mink (Silk)', desc: 'Ultra-soft, cruelty-free synthetic silk' },
-                    { id: 2, name: '100% Real Mink Fiber', desc: 'Premium luxury natural luster' },
-                    { id: 3, name: 'Plant-based Eco Fiber', desc: '100% biodegradable sustainable lash' }
-                ],
 
                 activeProduct: null,
 
@@ -1077,9 +1495,63 @@
                     }
                 },
 
+                initApp() {
+                    this.updateCurrencySymbol();
+                },
+
+                updateCurrencySymbol() {
+                    const rates = {
+                        USD: { symbol: '$', rate: 1.0 },
+                        EUR: { symbol: '€', rate: 0.92 },
+                        GBP: { symbol: '£', rate: 0.78 },
+                        AUD: { symbol: 'A$', rate: 1.52 },
+                        AED: { symbol: 'AED ', rate: 3.67 }
+                    };
+                    this.currencySymbol = rates[this.currency].symbol;
+                    this.currencyRate = rates[this.currency].rate;
+                },
+
+                formatPrice(priceInUSD) {
+                    const converted = priceInUSD * this.currencyRate;
+                    return this.currencySymbol + converted.toFixed(2);
+                },
+
+                calculateUnitCost() {
+                    let cost = this.config.basePrice;
+                    if (this.config.quantity >= 10000) cost *= 0.85;
+                    else if (this.config.quantity >= 5000) cost *= 0.92;
+                    return cost;
+                },
+
+                toggleSampleItem(name) {
+                    if (this.sampleSelection.includes(name)) {
+                        this.sampleSelection = this.sampleSelection.filter(item => item !== name);
+                    } else {
+                        if (this.sampleSelection.length < 3) {
+                            this.sampleSelection.push(name);
+                        } else {
+                            this.showToast('Sample Limit Reached', 'You can select up to 3 styles per sample kit.');
+                        }
+                    }
+                },
+
                 openRFQModal(subject) {
                     this.rfqSubject = subject;
                     this.rfqModalOpen = true;
+                },
+
+                openSampleKitModal() {
+                    const subject = `Sample Kit Order (${this.sampleSelection.length > 0 ? this.sampleSelection.join(', ') : 'Standard Kit'})`;
+                    this.openRFQModal(subject);
+                },
+
+                openCertModal(title) {
+                    this.activeCertTitle = title;
+                    this.certModalOpen = true;
+                },
+
+                openVideoModal() {
+                    this.videoModalOpen = true;
                 },
 
                 openQuickView(key) {
@@ -1088,14 +1560,14 @@
                 },
 
                 sendConfigRFQ() {
-                    const subject = `OEM Custom Lash Config: ${this.config.material} - ${this.config.curl}`;
-                    this.rfqForm.message = `Custom Config Details:\n- Material: ${this.config.material}\n- Band: ${this.config.band}\n- Curl: ${this.config.curl}\n- Length: ${this.config.length}\n- Packaging: ${this.config.packaging}`;
+                    const subject = `OEM Custom Lash Config: ${this.config.material} (${this.config.quantity} pairs)`;
+                    this.rfqForm.message = `Custom Config Details:\n- Material: ${this.config.material}\n- Band: ${this.config.band}\n- Curl: ${this.config.curl}\n- Packaging: ${this.config.packaging}\n- Foil Finish: ${this.config.foilFinish}\n- Quantity: ${this.config.quantity} pairs`;
                     this.openRFQModal(subject);
                 },
 
                 submitRFQ() {
                     this.rfqModalOpen = false;
-                    this.showToast('Inquiry Submitted Successfully!', 'Our export manager will email your official quote shortly.');
+                    this.showToast('Export Inquiry Submitted!', 'Our international export manager will email your official quote within 12 business hours.');
                     this.rfqForm = { name: '', email: '', company: '', country: '', message: '' };
                 },
 
